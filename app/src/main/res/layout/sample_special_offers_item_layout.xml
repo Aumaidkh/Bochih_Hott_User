@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="290dp"
+    android:layout_height="160dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="6dp"
+    android:layout_margin="5dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/specialOfferedFoodItemImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@drawable/sponsored_one"
+            android:foreground="#B9222020" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/specialOfferedFoodItemOffer"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:text="Buy Two Get One Free"/>
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

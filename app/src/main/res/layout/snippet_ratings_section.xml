@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--Ratings Section-->
+    <RelativeLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true">
+
+        <!--Ratings Text-->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/ratingTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sofiia_regular"
+            android:text="4.5"
+            android:textSize="16sp" />
+
+        <!--Star icon-->
+        <ImageView
+            app:tint="@color/yellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@id/ratingTv"
+            android:src="@drawable/ic_star" />
+
+    </RelativeLayout>
+</merge>

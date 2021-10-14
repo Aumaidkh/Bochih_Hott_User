@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PartnerModule.PartnerHomeActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/snippet_add_product_top_toolbar"/>
+
+    </RelativeLayout>
+
+   <RelativeLayout
+       android:id="@+id/relLayout1"
+       android:layout_below="@id/toolBar"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <include layout="@layout/snippet_add_product_center"/>
+
+   </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/relLayout1"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/snippet_add_product_center_fields"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LogIn.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:layout_marginBottom="64dp"
+            android:text="Login"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/black"
+            android:textSize="19sp"/>
+
+        <EditText
+            android:id="@+id/emailinput"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:background="@drawable/editround"
+            android:hint="email"/>
+
+        <EditText
+            android:id="@+id/passwordinput"
+            android:layout_marginTop="31dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:inputType="textPassword"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:background="@drawable/editround"
+            android:hint="password"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:text="Forgot password?"
+            android:fontFamily="@font/poppins"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:background="#00000000"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_color"
+            android:layout_gravity="start"/>
+
+        <Button
+            android:onClick="login"
+            android:id="@+id/login_btn"
+            android:background="@drawable/button_round"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="43dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:text="login"/>
+
+        <android.widget.Button
+            android:id="@+id/google_sign_in_btn"
+            android:background="@drawable/google_sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="43dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins"
+            android:textStyle="normal"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:text="sign in with google"
+            android:drawableEnd="@drawable/ic_google"
+            android:paddingEnd="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12sp"
+                android:text="Not a member?"/>
+
+            <Button
+                android:onClick="joinNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Join now"
+                android:textSize="12sp"
+                android:textColor="@color/primary_color"
+                />
+
+
+        </LinearLayout>
+
+        <Button
+            android:onClick="partnerLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Partner Login"
+            android:textSize="12sp"
+            android:textColor="@color/primary_color"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_round"
+        android:layout_centerInParent="true">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="gone"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

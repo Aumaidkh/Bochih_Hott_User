@@ -1,0 +1,407 @@
+package com.aumaid.bochihhott.Trash;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.aumaid.bochihhott.Adapters.CategoriesAdapter;
+import com.aumaid.bochihhott.FinalAdapters.FoodItemAdapter;
+import com.aumaid.bochihhott.Adapters.PopularFoodsAdapter;
+import com.aumaid.bochihhott.Adapters.SpecialOffersItemsAdapter;
+import com.aumaid.bochihhott.Adapters.UniversalImageLoader;
+import com.aumaid.bochihhott.Home.HomeFragment;
+import com.aumaid.bochihhott.Home.ProductDescriptionFragment;
+import com.aumaid.bochihhott.Interfaces.CategoriesOptionListener;
+import com.aumaid.bochihhott.Interfaces.FoodItemListener;
+import com.aumaid.bochihhott.Models.Category;
+import com.aumaid.bochihhott.Models.FoodItem;
+import com.aumaid.bochihhott.Models.PopularFood;
+import com.aumaid.bochihhott.Models.SpecialOfferedItem;
+import com.aumaid.bochihhott.Profile.ActivityProfile;
+import com.aumaid.bochihhott.R;
+import com.aumaid.bochihhott.Utils.BottomNavigationViewHelper;
+import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.util.ArrayList;
+
+public class HomeActivityBackup extends AppCompatActivity implements CategoriesOptionListener, FoodItemListener {
+
+    private static final String TAG = "HomeActivity";
+    private static final int ACTIVITY_NUMBER = 0;
+
+
+    private Context mContext;
+    private ArrayList<Category> mCategories;
+    private ArrayList<PopularFood> mPFItems;
+    private ArrayList<SpecialOfferedItem> mSOItems;
+
+    /**
+     * This section is for all Food items Recycler View*/
+   // private ArrayList<FoodItemRV> mFoodItems;
+    private ArrayList<FoodItem> mFoodItems;
+    private RecyclerView mFoodItemsRecycler;
+    private DatabaseReference mFoodItemsRef;
+   // private FoodItemAdapter adapter;
+    private FoodItemAdapter adapter;
+
+    /**
+     * Shimmer Layout*/
+    private ShimmerFrameLayout shimmerFrameLayout;
+    private RelativeLayout mainRelativeLayout;
+
+    private RecyclerView mCategoriesRecycler;
+    private RecyclerView mPopularFoodsRecycler;
+    private RecyclerView mSpecialOffersRecycler;
+
+    /**
+     * Variables Section*/
+    /**
+     * Change this variable later just to make sure it shows all types of foods in the beginning*/
+    private String category = "pizzas";
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+
+        //Status bar color
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+        mContext = HomeActivityBackup.this;
+        mCategories = new ArrayList<>();
+
+        shimmerFrameLayout = findViewById(R.id.shimmerLayout);
+
+        mainRelativeLayout = findViewById(R.id.mainRelLayout);
+
+        mCategoriesRecycler = findViewById(R.id.rvCategories);
+
+        setupBottomNavigationView();
+
+        setUpCategoriesRView();
+        setUpPopularFoodsRView();
+        setUpFoodItemsRView(category);
+        setUpSpecialOffersRView();
+        initImageLoader();
+
+
+
+    }
+
+    /**
+     * This method is used to populate the food items Recycler view
+     * Note: in future it must show the items from the category user clicks on */
+    private void setUpFoodItemsRView(String category){
+       // shimmerFrameLayout.startShimmer();
+        mFoodItemsRecycler = findViewById(R.id.foodItemsRecyclerView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        mFoodItemsRecycler.setHasFixedSize(true);
+        mFoodItemsRecycler.setLayoutManager(linearLayoutManager);
+
+        mFoodItems = new ArrayList<>();
+
+       // adapter = new FoodItemAdapter(mFoodItems,mContext,this);
+        adapter = new FoodItemAdapter(mFoodItems,mContext,this);
+        mFoodItemsRecycler.setAdapter(adapter);
+
+        //Getting the data from firebase
+        loadRecyclerViewData(category);
+
+
+
+
+    }
+
+
+    private void loadRecyclerViewData(String category){
+        Log.d(TAG, "loadRecyclerViewData: Loading Data Starting shimmer");
+//Tweak this method so that is shows the food of the selected category
+        //Firebase
+        mFoodItemsRef = FirebaseDatabase.getInstance().getReference();
+
+        mFoodItemsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //Clearing the ArrayList first
+                mFoodItems.clear();
+
+                //Declaring restaurant
+               // Restaurant restaurant = new Restaurant();
+
+
+
+                //Receiving Data
+                for (DataSnapshot ds : snapshot.child("categories").child(category).getChildren()) {
+                   // Log.d(TAG, "onDataChange: "+ds);
+//                    FoodItemRV itemRV = new FoodItemRV();
+//                    Partner restaurant = new Partner();
+                    FoodItem foodItem = ds.getValue(FoodItem.class);
+                    mFoodItems.add(foodItem);
+                    //Storing The key of the restaurant id into a variable
+                  //  String restaurantId = foodItem.getRestaurant_id();
+
+                   // Log.d(TAG, "onDataChange: Food Restaurant Id: "+restaurantId);
+
+                    //Getting the Restaurant with the restaurantId
+//                    for(DataSnapshot dataSnapshot: snapshot.child("restaurants").getChildren()){
+//
+//                        //Problematic snippet here
+//                        if(dataSnapshot.getKey().equals(restaurantId)){
+//                            restaurant = dataSnapshot.getValue(Partner.class);
+//
+//                            itemRV = new FoodItemRV(
+//                                    foodItem.getItem_photo(),
+//                                    restaurant.getName(),
+//                                    restaurant.getAddress(),
+//                                    foodItem.getCategory_id(),
+//                                    foodItem.getItem_ratings(),
+//                                    Float.parseFloat(foodItem.getPrice()));
+//                            mFoodItems.add(itemRV);
+//                        }
+//
+//                    }
+
+                }
+
+
+                adapter.notifyDataSetChanged();
+                Log.d(TAG, "onDataChange: Data Received Data hiding shimmer");
+                hideShimmer();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+    }
+
+    /**
+     * This method is used to populate the Special Offer Items Recycler View
+     * */
+    private void setUpSpecialOffersRView(){
+        mSOItems = new ArrayList<>();
+
+        mSpecialOffersRecycler = findViewById(R.id.specialOffersRecyclerView);
+
+        mSOItems.add(new SpecialOfferedItem(R.drawable.sponsored_one,"Buy Two Get Two Free"));
+        mSOItems.add(new SpecialOfferedItem(R.drawable.sponsored_two,"Buy Two Get one Free"));
+        mSOItems.add(new SpecialOfferedItem(R.drawable.sponsored_three,"Buy Three Get Two Free"));
+        mSOItems.add(new SpecialOfferedItem(R.drawable.sponsored_one,"Flat 50 Rs Cashback"));
+
+        SpecialOffersItemsAdapter adapter = new SpecialOffersItemsAdapter(mSOItems);
+        mSpecialOffersRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        mSpecialOffersRecycler.setAdapter(adapter);
+    }
+
+    /**
+     * This Method is used to populate the Popular Foods Recycler View
+     * images are supposed to be explicitly made of width 120px and height 100px*/
+    private void setUpPopularFoodsRView(){
+        mPFItems = new ArrayList<>();
+        mPopularFoodsRecycler = findViewById(R.id.popularFoodsRecyclerView);
+
+
+        //Adding food items to the arrayList
+        mPFItems.add(new PopularFood("Burger",
+                "The food is supposed to be tasty but i haven't tried it yet",
+                "120.00",
+                4,R.drawable.burger));
+
+        mPFItems.add(new PopularFood("Burger",
+                "The food is supposed to be tasty but i haven't tried it yet",
+                "120.00",
+                4,R.drawable.salad));
+
+        mPFItems.add(new PopularFood("Burger",
+                "The food is supposed to be tasty but i haven't tried it yet",
+                "120.00",
+                4,R.drawable.burger));
+
+        mPFItems.add(new PopularFood("Burger",
+                "The food is supposed to be tasty but i haven't tried it yet",
+                "120.00",
+                4,R.drawable.salad));
+
+
+
+
+        PopularFoodsAdapter adapter = new PopularFoodsAdapter(mPFItems,mContext);
+        mPopularFoodsRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        mPopularFoodsRecycler.setAdapter(adapter);
+    }
+
+    /**
+     * This Method is used to populate the categories Recycler view*/
+    private void setUpCategoriesRView(){
+        mCategories.add(new Category("Pizzas",R.drawable.ic_cart));
+        mCategories.add(new Category("Burgers",R.drawable.ic_cart));
+        mCategories.add(new Category("Rolls",R.drawable.ic_cart));
+        mCategories.add(new Category("Soups",R.drawable.ic_cart));
+        mCategories.add(new Category("Chicken",R.drawable.ic_cart));
+        mCategories.add(new Category("Noodles",R.drawable.ic_cart));
+        mCategories.add(new Category("Biryani",R.drawable.ic_cart));
+        mCategories.add(new Category("Fries",R.drawable.ic_cart));
+        mCategories.add(new Category("Dals",R.drawable.ic_cart));
+        mCategories.add(new Category("Waazwaan",R.drawable.ic_cart));
+
+        CategoriesAdapter adapter = new CategoriesAdapter(mCategories,this);
+        mCategoriesRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        mCategoriesRecycler.setAdapter(adapter);
+
+    }
+
+    /**
+     * This method is used to search and food item*/
+    public void search(View view){
+        Toast.makeText(mContext, "Search Item Tapped", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * This method is used for the functioning of
+     * Bottom Navigation bar*/
+    private void setupBottomNavigationView(){
+        Log.d(TAG, "setupBottomNavigationView: setting up bottomNavigationView");
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavViewBar);
+        /*
+         * disabling animations in navbar
+         * */
+        BottomNavigationViewHelper.setUpBottomNavigationView(bottomNavigationView);
+        /*
+         * setting on create listener for
+         * every icon
+         * */
+        BottomNavigationViewHelper.enableNavigation(mContext,bottomNavigationView);
+        /*
+         * highlighting the proper menu icon
+         * while switching acivities
+         * */
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUMBER);
+        menuItem.setChecked(true);
+    }
+
+    /**
+     * This Section contains all the on click listeners from the home activity*/
+    public void navigateToProfileActivity(View view){
+        startActivity(new Intent(getApplicationContext(), ActivityProfile.class));
+    }
+
+    /**
+     * This method is used to initialize the image loader which is then used
+     * to display profile photo*/
+    private void initImageLoader(){
+        UniversalImageLoader universalImageLoader = new UniversalImageLoader(mContext);
+        ImageLoader.getInstance().init(universalImageLoader.getConfig());
+    }
+
+    /**
+     * This method assigns functionality to the categories recycler view in home screen*/
+    @Override
+    public void onCategoryClicked(int position) {
+        shimmerFrameLayout.startShimmer();
+        switch (position){
+            case 0:
+                category = "Pizzas";
+                break;
+            case 1:
+                category = "Burgers";
+                break;
+            case 2:
+                category = "Rolls";
+                break;
+            case 3:
+                category = "Soups";
+                break;
+            case 4:
+                category = "Chicken";
+                break;
+            case 5:
+                category = "Noodles";
+                break;
+            case 6:
+                category = "Biryani";
+                break;
+            case 7:
+                category = "Fries";
+                break;
+            case 8:
+                category = "Dals";
+                break;
+            case 9:
+                category = "Wazwaan";
+                break;
+        }
+        setUpFoodItemsRView(category);
+    }
+
+    /**
+     * This method is used to show the shimmer screen and hiding the main screen*/
+    private void showShimmer(){
+        mainRelativeLayout.setVisibility(View.GONE);
+        shimmerFrameLayout.startShimmer();
+    }
+
+    /**
+     * This method is used to hide the shimmer*/
+    private void hideShimmer(){
+        shimmerFrameLayout.stopShimmer();
+        shimmerFrameLayout.setVisibility(View.GONE);
+        mainRelativeLayout.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onFoodClicked(int position) {
+        FoodItem foodItem = mFoodItems.get(position);
+        Log.d(TAG, "onFoodClicked: "+foodItem.getItem_name()+" clicked");
+        productDescriptionFragment();
+    }
+
+
+    private void productDescriptionFragment(){
+        Log.d(TAG, "init: Inflating Profile Fragment");
+
+        ProductDescriptionFragment fragment = new ProductDescriptionFragment();
+        FragmentTransaction transaction = HomeActivityBackup.this.getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container,fragment);
+        transaction.addToBackStack("Profile Fragment");
+        transaction.commit();
+
+    }
+
+    private void init(){
+        Log.d(TAG, "init: Inflating Profile Fragment");
+
+        HomeFragment fragment = new HomeFragment();
+        FragmentTransaction transaction = HomeActivityBackup.this.getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container,fragment);
+        transaction.addToBackStack("Profile Fragment");
+        transaction.commit();
+
+    }
+}

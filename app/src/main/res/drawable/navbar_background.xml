@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021.
+  ~ All Rights Reserved.
+  ~ BochihHott and BochihHott Partner are properties of Murtaza Khursheed.
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient android:startColor="@color/orange"
+        android:endColor="@color/orange50"
+        android:angle="135"/>
+</shape>

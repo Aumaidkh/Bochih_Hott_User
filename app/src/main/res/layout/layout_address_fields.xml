@@ -1,0 +1,74 @@
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+        <EditText
+            android:id="@+id/addressLine1Input"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:background="@drawable/editround"
+            android:hint="Address Line 1"/>
+
+        <EditText
+            android:id="@+id/landMark"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingStart="25dp"
+            android:layout_marginTop="15dp"
+            android:paddingEnd="25dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:background="@drawable/editround"
+            android:hint="Landmark"/>
+
+        <EditText
+            android:id="@+id/villageInput"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingStart="25dp"
+            android:layout_marginTop="15dp"
+            android:paddingEnd="25dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:background="@drawable/editround"
+            android:hint="Village/Town"/>
+
+        <EditText
+            android:id="@+id/cityInput"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingStart="25dp"
+            android:layout_marginTop="15dp"
+            android:paddingEnd="25dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:background="@drawable/editround"
+            android:hint="City"/>
+
+        <EditText
+            android:id="@+id/pinCodeInput"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingStart="25dp"
+            android:layout_marginTop="15dp"
+            android:paddingEnd="25dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:inputType="number"
+            android:background="@drawable/editround"
+            android:hint="Pin code"/>
+
+    </LinearLayout>
+
+</merge>

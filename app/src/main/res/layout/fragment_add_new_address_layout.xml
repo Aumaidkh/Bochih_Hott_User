@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add New Address"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/black"
+            android:textSize="19sp"/>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            app:boxStrokeWidthFocused="1dp"
+            app:boxStrokeColor="@color/green"
+            app:boxStrokeWidth="1dp"
+            app:startIconDrawable="@drawable/ic_outline_person_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fullnameinput"
+                android:layout_width="match_parent"
+                android:hint="Full name"
+                android:layout_height="52dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidthFocused="1dp"
+                app:boxStrokeColor="@color/green"
+                app:boxStrokeWidth="1dp"
+                app:startIconDrawable="@drawable/ic_outline_local_phone_24"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/mobileNumberInput"
+                    android:layout_width="match_parent"
+                    android:hint="Mobile number"
+                    android:inputType="phone"
+                    android:layout_height="52dp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/green"
+            app:startIconDrawable="@drawable/ic_outline_landscape_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/landMarkInput"
+                android:layout_width="match_parent"
+                android:hint="Landmark"
+                android:layout_height="52dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            app:boxStrokeWidthFocused="1dp"
+            app:boxStrokeColor="@color/green"
+            app:boxStrokeWidth="1dp"
+            app:startIconDrawable="@drawable/ic_location">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/address"
+                android:inputType="textMultiLine"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="Address" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/green"
+            app:startIconDrawable="@drawable/ic_outline_location_city_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cityInput"
+                android:layout_width="match_parent"
+                android:hint="City"
+                android:layout_height="52dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/green"
+            app:startIconDrawable="@drawable/ic_outline_shopping_cart_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/pinCodeInput"
+                android:layout_width="match_parent"
+                android:hint="Pincode"
+                android:inputType="number"
+                android:layout_height="52dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveBtn"
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="60dp"
+            android:text="Save Address"
+            app:cornerRadius="5dp"
+            android:textSize="15sp"
+            android:layout_gravity="end"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins"
+            android:padding="5dp"
+            />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:background="@drawable/progress_bar_background"/>
+
+</RelativeLayout>

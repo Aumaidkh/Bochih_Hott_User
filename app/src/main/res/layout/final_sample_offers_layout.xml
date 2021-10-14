@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021.
+  ~ All Rights Reserved.
+  ~ BochihHott and BochihHott Partner are properties of Murtaza Khursheed.
+  -->
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    app:cardElevation="0.3dp"
+    android:layout_margin="10dp"
+    android:layout_height="200dp"
+    app:cardCornerRadius="25dp">
+
+    <ImageView
+        android:id="@+id/offerImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY" />
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/rellayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/snippet_address_fragment_toolbar"/>
+
+    </RelativeLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/addNewAddressHeading"
+        android:layout_below="@id/rellayout1"
+        android:layout_width="wrap_content"
+        android:text="Add New Address"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="#E6121111"
+        android:layout_marginStart="25dp"
+        android:layout_centerVertical="true"
+        android:textSize="22sp"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:paddingStart="25dp"
+        android:layout_below="@id/addNewAddressHeading"
+        android:paddingEnd="25dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            app:boxStrokeWidthFocused="1dp"
+            app:boxStrokeColor="@color/green"
+            app:boxStrokeWidth="1dp"
+            app:startIconDrawable="@drawable/ic_outline_person_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fullnameinput"
+                android:layout_width="match_parent"
+                android:hint="Full name"
+                android:layout_height="55dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="55dp"
+                app:boxStrokeWidthFocused="1dp"
+                app:boxStrokeColor="@color/green"
+                app:boxStrokeWidth="1dp"
+                app:startIconDrawable="@drawable/ic_phone"
+                app:startIconTint="#B4B4B4">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/mobileNumberInput"
+                    android:layout_width="match_parent"
+                    android:hint="Mobile number"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            app:boxStrokeWidthFocused="1dp"
+            app:boxStrokeColor="@color/green"
+            app:boxStrokeWidth="1dp"
+            app:startIconDrawable="@drawable/ic_location">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/addressLine1Input"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:hint="Address Line 1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/green"
+            app:startIconDrawable="@drawable/ic_outline_landscape_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/landMarkInput"
+                android:layout_width="match_parent"
+                android:hint="Landmark"
+                android:layout_height="55dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/green"
+            app:startIconDrawable="@drawable/ic_outline_holiday_village_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/VillageInput"
+                android:layout_width="match_parent"
+                android:hint="Village/town"
+                android:layout_height="55dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/green"
+            app:startIconDrawable="@drawable/ic_outline_location_city_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cityInput"
+                android:layout_width="match_parent"
+                android:hint="City"
+                android:layout_height="55dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/green"
+            app:startIconDrawable="@drawable/ic_outline_shopping_cart_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/pinCodeInput"
+                android:layout_width="match_parent"
+                android:hint="Pincode"
+                android:inputType="number"
+                android:layout_height="55dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveBtn"
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="60dp"
+            android:text="Save Address"
+            app:cornerRadius="5dp"
+            android:textSize="15sp"
+            android:layout_gravity="end"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins"
+            android:padding="5dp"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

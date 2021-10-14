@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "849439128939",
+    "project_id": "bochih-hott",
+    "storage_bucket": "bochih-hott.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:849439128939:android:893258640abf9cd261602e",
+        "android_client_info": {
+          "package_name": "com.aumaid.bochihhott"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849439128939-1uqb5tae95krm8kft1i4f4gkuhossf9v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aumaid.bochihhott",
+            "certificate_hash": "8d5e496b348713577ecd2e4981f66a157627e4e3"
+          }
+        },
+        {
+          "client_id": "849439128939-2r2h53fhsbkhsd7si0hlfj6a8vco9ibb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDB-LGjEuvY6MOQ72zU4CYMbaM2a1rKO6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849439128939-2r2h53fhsbkhsd7si0hlfj6a8vco9ibb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

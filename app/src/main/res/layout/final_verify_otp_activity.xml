@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".LogIn.OtpVerification">
+
+    <ImageView
+        android:layout_marginTop="-4dp"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/login_background"/>
+
+    <RelativeLayout
+        android:layout_marginTop="40dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:padding="30dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="140dp"
+                android:text="Verification Code"
+                android:fontFamily="@font/sofia_pro_semi_bold"
+                android:textColor="@color/dark"
+                android:textSize="36sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/sofiia_regular"
+                android:textSize="14sp"
+                android:textColor="#9796A1"
+                android:text="Please type the verification code sent to "/>
+
+            <TextView
+                android:id="@+id/textPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:fontFamily="@font/sofiia_regular"
+                android:textColor="#9796A1"
+                android:text="phoneNumber"
+                android:textSize="14sp"
+                />
+
+            <com.chaos.view.PinView
+                android:id="@+id/otpPinView"
+                style="@style/PinWidget.PinView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:cursorVisible="true"
+                android:hint="000000"
+                android:textColorHint="@color/orange50"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:inputType="number"
+                android:itemBackground="@color/white"
+                android:padding="10dp"
+                android:textColor="@color/orange"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cursorColor="@color/orange"
+                app:cursorWidth="2dp"
+                app:hideLineWhenFilled="false"
+                app:itemCount="6"
+                app:itemHeight="65dp"
+                app:itemRadius="6dp"
+                app:itemSpacing="7dp"
+                app:itemWidth="50dp"
+                app:lineColor="@color/orange"
+                app:lineWidth="2dp"
+                app:viewType="rectangle" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/verifyOtpBtn"
+                android:layout_width="248dp"
+                android:layout_height="65dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="43dp"
+                android:backgroundTint="@color/orange"
+                android:fontFamily="@font/sofiia_medium"
+                android:text="Verify Otp"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                app:cornerRadius="25dp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

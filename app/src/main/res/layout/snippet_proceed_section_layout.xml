@@ -1,0 +1,54 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <RelativeLayout
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/totalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppins"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/totalTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/totalText"
+                android:layout_marginTop="-6dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="100"
+                android:elevation="4dp"
+                android:outlineSpotShadowColor="@color/background_green"
+                android:textColor="@color/green"
+                android:textSize="25sp" />
+
+        </RelativeLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/continueBtn"
+            android:layout_width="130dp"
+            android:layout_height="70dp"
+            android:text="Continue"
+            app:cornerRadius="10dp"
+            android:textSize="15sp"
+            android:layout_alignParentEnd="true"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins"
+            android:padding="5dp"
+            />
+
+
+
+    </RelativeLayout>
+
+</merge>

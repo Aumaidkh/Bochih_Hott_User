@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@drawable/cart_item_background"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:layout_centerInParent="true"
+        >
+
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 X"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/heading_green"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/itemNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fruit Salad"
+            android:layout_toEndOf="@id/quantity"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/heading_green"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/itemPriceTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rs 100"
+            android:layout_toLeftOf="@+id/removeB"
+            android:layout_marginEnd="35dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/heading_green"
+            android:textSize="18sp"/>
+
+        <ImageView
+            android:id="@+id/removeB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_remove"
+            android:layout_alignParentEnd="true"/>
+
+        <TextView
+            android:id="@+id/restaurantNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eatz Restaurant"
+            android:layout_below="@id/itemNameTv"
+            android:layout_toRightOf="@id/quantity"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/gray"
+            android:textSize="12sp"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

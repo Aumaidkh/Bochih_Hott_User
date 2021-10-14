@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f8f8f8"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".LogIn.LoginActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginTop="-4dp"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/login_background"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="30dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="75dp"
+                android:layout_marginBottom="55dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:text="Sign Up"
+                android:fontFamily="@font/sofia_pro_semi_bold"
+                android:textColor="@color/black"
+                android:textSize="36sp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:text="Full Name"
+                android:fontFamily="@font/sofiia_medium"
+                android:textStyle="normal"
+                android:textSize="16sp"
+                android:layout_marginStart="3dp"
+                android:background="#00000000"
+                android:textAllCaps="false"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="3dp"
+                app:cardElevation="0.4dp"
+                android:layout_marginEnd="3dp"
+                app:cardCornerRadius="8dp"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/fullnameinput"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:paddingStart="25dp"
+                    android:paddingEnd="25dp"
+                    android:fontFamily="@font/sofiia_regular"
+                    android:textSize="16sp"
+                    android:background="#00000000"
+                    android:hint="Enter Your Full Name"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:text="E-Mail"
+                android:fontFamily="@font/sofiia_medium"
+                android:textStyle="normal"
+                android:textSize="16sp"
+                android:layout_marginStart="3dp"
+                android:background="#00000000"
+                android:textAllCaps="false"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="3dp"
+                app:cardElevation="0.4dp"
+                android:layout_marginEnd="3dp"
+                app:cardCornerRadius="8dp"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/emailinput"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:paddingStart="25dp"
+                    android:paddingEnd="25dp"
+                    android:fontFamily="@font/sofiia_regular"
+                    android:textSize="16sp"
+                    android:background="#00000000"
+                    android:hint="Your email or phone"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:text="Password"
+                android:fontFamily="@font/sofiia_medium"
+                android:textStyle="normal"
+                android:textSize="16sp"
+                android:layout_marginStart="3dp"
+                android:background="#00000000"
+                android:textAllCaps="false"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                app:cardElevation="0.4dp"
+                app:cardCornerRadius="8dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/passwordinput"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:paddingStart="25dp"
+                    android:paddingEnd="25dp"
+                    android:inputType="textPassword"
+                    android:fontFamily="@font/sofiia_regular"
+                    android:textSize="16sp"
+                    android:background="#00000000"
+                    android:hint="password"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Re Enter Password-->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:text="Re-Enter Password"
+                android:fontFamily="@font/sofiia_medium"
+                android:textStyle="normal"
+                android:textSize="16sp"
+                android:layout_marginStart="3dp"
+                android:background="#00000000"
+                android:textAllCaps="false"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                app:cardElevation="0.4dp"
+                app:cardCornerRadius="8dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/reenterpasswordinput"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:paddingStart="25dp"
+                    android:paddingEnd="25dp"
+                    android:inputType="textPassword"
+                    android:fontFamily="@font/sofiia_regular"
+                    android:textSize="16sp"
+                    android:background="#00000000"
+                    android:hint="Re-enter password"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Phone Number-->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:text="Phone Number"
+                android:fontFamily="@font/sofiia_medium"
+                android:textStyle="normal"
+                android:textSize="16sp"
+                android:layout_marginStart="3dp"
+                android:background="#00000000"
+                android:textAllCaps="false"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                app:cardElevation="0.4dp"
+                app:cardCornerRadius="8dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/phonenumberinput"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:paddingStart="25dp"
+                    android:paddingEnd="25dp"
+                    android:inputType="phone"
+                    android:fontFamily="@font/sofiia_regular"
+                    android:textSize="16sp"
+                    android:background="#00000000"
+                    android:hint="Re-enter password"/>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/login_btn"
+                android:layout_width="248dp"
+                android:layout_height="65dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/orange"
+                android:fontFamily="@font/sofiia_medium"
+                android:onClick="login"
+                android:text="Sign Up"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                app:cornerRadius="25dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="33dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sofiia_medium"
+                    android:textSize="14sp"
+                    android:text="Already have an account? "/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:onClick="joinNow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/sofiia_medium"
+                    android:text="Log in"
+                    android:textSize="14sp"
+                    android:textColor="@color/orange"
+                    />
+
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/leftLine"
+                    android:layout_width="100dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    android:layout_centerInParent="true"
+                    android:text="Sign in with"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/sofiia_medium"
+                    android:textStyle="normal"
+                    android:textSize="18sp"
+                    android:layout_marginStart="3dp"
+                    android:background="#00000000"
+                    android:textAllCaps="false"
+                    />
+
+                <View
+                    android:id="@+id/rightLine"
+                    android:layout_width="100dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"/>
+
+
+            </RelativeLayout>
+
+            <!--Face book and google sign in buttons-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:weightSum="2"
+                android:layout_height="80dp">
+
+                <!--Facebook Sign In-->
+                <androidx.cardview.widget.CardView
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    app:cardElevation="0.4dp"
+                    android:layout_width="0dp"
+                    app:cardCornerRadius="30dp"
+                    android:layout_height="65dp">
+
+                    <RelativeLayout
+                        android:padding="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/faceBookIcon"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_width="50dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_facebook"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Facebook"
+                            android:textAllCaps="true"
+                            android:textSize="14sp"
+                            android:textColor="@color/grey"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/faceBookIcon"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/sofiia_medium"
+                            />
+
+
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!--Google Sign In-->
+                <androidx.cardview.widget.CardView
+                    app:cardElevation="0.4dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="0dp"
+                    app:cardCornerRadius="30dp"
+                    android:layout_height="65dp">
+
+                    <RelativeLayout
+                        android:padding="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/googleIcon"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_width="50dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_google"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Google"
+                            android:textAllCaps="true"
+                            android:textSize="14sp"
+                            android:textColor="@color/grey"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/googleIcon"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/sofiia_medium"
+                            />
+
+
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_round"
+            android:layout_centerInParent="true">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:visibility="gone"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

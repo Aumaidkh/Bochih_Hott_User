@@ -1,0 +1,89 @@
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/productName"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/editround"
+            android:fontFamily="@font/poppins"
+            android:hint="Product Name"
+            android:inputType="text"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/productPrice"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/editround"
+            android:fontFamily="@font/poppins"
+            android:hint="Price"
+            android:inputType="number"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:textSize="12sp" />
+
+        <!--Spinner widget-->
+        <Spinner
+            android:id="@+id/productCategory"
+            android:layout_height="45dp"
+            android:layout_width="match_parent"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            style="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar"
+            android:background="@drawable/editround"
+            android:layout_marginTop="20dp"
+            />
+
+<!--        <EditText-->
+<!--            android:id="@+id/productOffer"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:background="@drawable/editround"-->
+<!--            android:fontFamily="@font/poppins"-->
+<!--            android:hint="Offer"-->
+<!--            android:inputType="text"-->
+<!--            android:paddingStart="25dp"-->
+<!--            android:paddingEnd="25dp"-->
+<!--            android:textSize="12sp" />-->
+
+
+        <EditText
+            android:id="@+id/productDescription"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/editround"
+            android:fontFamily="@font/poppins"
+            android:hint="Description"
+            android:inputType="textMultiLine"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/addProductButton"
+            android:background="@drawable/button_round"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="43dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:text="Add Product"/>
+
+
+
+    </LinearLayout>
+</merge>

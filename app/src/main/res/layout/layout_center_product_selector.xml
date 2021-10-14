@@ -1,0 +1,50 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="480dp">
+
+        <RelativeLayout
+            android:id="@+id/plate"
+            android:layout_width="530dp"
+            android:layout_height="450dp"
+            android:background="@drawable/wooden_plate">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:background="@drawable/wooden_plate"
+                android:id="@+id/productImage"
+                android:layout_width="290dp"
+                android:layout_height="290dp"
+                android:layout_centerInParent="true"
+                android:elevation="5dp"
+                app:civ_border_color="@color/background_green"
+                android:outlineAmbientShadowColor="@color/green"
+                android:src="@color/background_green"
+                />
+
+
+            <!--        <de.hdodenhof.circleimageview.CircleImageView-->
+            <!--            android:background="@drawable/wooden_plate"-->
+            <!--            android:id="@+id/productImage"-->
+            <!--            android:layout_width="320dp"-->
+            <!--            android:layout_height="320dp"-->
+            <!--            android:layout_centerVertical="true"-->
+            <!--            android:layout_alignParentEnd="true"-->
+            <!--            app:civ_border_width="7dp"-->
+            <!--            android:elevation="5dp"-->
+            <!--            app:civ_border_color="@color/background_green"-->
+            <!--            android:outlineAmbientShadowColor="@color/green"-->
+            <!--            android:src="@color/background_green"-->
+            <!--           />-->
+
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+</merge>

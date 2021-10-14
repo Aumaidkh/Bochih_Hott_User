@@ -1,0 +1,190 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_margin="30dp">
+
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            >
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/addressText"
+                android:layout_below="@+id/addressOuterCircle"
+                android:text="Address"
+                android:layout_marginTop="20dp"
+                android:layout_alignParentStart="true"
+                android:fontFamily="@font/poppins"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/paymentText"
+                android:layout_below="@+id/paymentOuterCircle"
+                android:text="Payment"
+                android:layout_marginTop="20dp"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/poppins"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:id="@+id/addressOuterCircle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="15dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/hollow_circle">
+
+
+                <ImageView
+                    android:elevation="10dp"
+                    android:outlineSpotShadowColor="@color/background_green"
+                    android:visibility="visible"
+                    android:id="@+id/addressCompleteIndicator"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_green_check_mark"/>
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/indicatorLine"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_toEndOf="@id/addressOuterCircle"
+                android:layout_toStartOf="@+id/paymentOuterCircle"
+                android:layout_centerInParent="true"
+                android:background="@color/green"/>
+
+            <RelativeLayout
+                android:id="@+id/paymentOuterCircle"
+                android:layout_alignParentEnd="true"
+                android:layout_width="30dp"
+                android:layout_marginEnd="16dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/hollow_circle">
+
+                <ImageView
+                    android:id="@+id/paymentIndicator"
+                    android:layout_width="15dp"
+                    android:elevation="8dp"
+                    android:layout_height="15dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/filled_circle"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+           <RelativeLayout
+               android:elevation="8dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="5dp"
+               android:background="@drawable/cod_btn_background"
+               >
+
+               <ImageView
+                   android:id="@+id/codIcon"
+                   android:layout_centerInParent="true"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/ic_wallet"/>
+
+               <TextView
+                   android:layout_below="@id/codIcon"
+                   android:layout_centerHorizontal="true"
+                   android:gravity="center"
+                   android:layout_marginTop="25dp"
+                   android:fontFamily="@font/poppins"
+                   android:textColor="@color/white"
+                   android:textSize="10sp"
+                   android:text="Cash On Delivery"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"/>
+
+               <com.google.android.material.button.MaterialButton
+                   android:layout_alignParentStart="true"
+                   android:id="@+id/cashOnDeliveryBtn"
+                   app:cornerRadius="14dp"
+                   android:background="#00000000"
+                   android:layout_width="120dp"
+                   android:layout_height="70dp"/>
+
+
+           </RelativeLayout>
+
+            <RelativeLayout
+                android:elevation="8dp"
+                android:layout_marginBottom="5dp"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/debitcard_btn_background"
+                >
+
+                <ImageView
+                    android:id="@+id/cardIcon"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_card"/>
+
+                <TextView
+                    android:layout_below="@id/cardIcon"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/gray"
+                    android:textSize="10sp"
+                    android:text="Debit Card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/cardBtn"
+                    app:cornerRadius="14dp"
+                    android:background="#00000000"
+                    android:layout_width="120dp"
+                    android:layout_height="70dp"/>
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:background="@drawable/delivery_illustration"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_marginTop="10dp"
+            android:layout_width="300dp"
+            android:fontFamily="@font/poppins"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Your Oder will be delivered by Cash on Delivery"/>
+    </LinearLayout>
+
+</merge>

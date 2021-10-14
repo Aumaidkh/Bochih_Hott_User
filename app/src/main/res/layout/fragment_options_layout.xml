@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFDFD"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/profileBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_group_87"
+        />
+
+    <RelativeLayout
+        android:layout_marginTop="65dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/snippet_top_profile_toolbar"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/photoSectionLayout"
+        android:layout_below="@id/profileBackground"
+        android:layout_marginTop="-20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profilePic"
+            android:src="@color/gray"
+            android:layout_width="133dp"
+            android:outlineSpotShadowColor="@color/background_green"
+            android:outlineAmbientShadowColor="@color/background_green"
+            app:civ_border_color="@color/orange50"
+            app:civ_border_width="4dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="133dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/userNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profilePic"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="Murtaza Khursheed"
+            android:fontFamily="@font/sofia_pro_semi_bold"
+            android:textSize="21sp"
+            android:textColor="@color/primary_text_or_icons"/>
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_below="@+id/photoSectionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:paddingTop="40dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="@drawable/bottom_navigation_bar_background"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_below="@id/relLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/profileLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/profileRel"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="3dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/green_circle">
+
+                    <ImageView
+                        android:id="@id/profileIcon"
+                        android:layout_width="19dp"
+                        android:layout_centerInParent="true"
+                        android:layout_height="19dp"
+                        android:src="@drawable/ic_outline_person_24"/>
+
+                </RelativeLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/profileText"
+                    android:layout_centerVertical="true"
+                    android:text="Edit Profile"
+                    android:layout_toEndOf="@id/profileRel"
+                    android:layout_marginStart="30dp"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="18sp"
+                    android:textColor="#212121"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_round_navigate_next_24"/>
+
+            </RelativeLayout>
+
+            <!--Orders-->
+            <RelativeLayout
+                android:id="@+id/addressesLayout"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/addressRel"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="3dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/purple_circle">
+
+                    <ImageView
+                        android:id="@id/profileIcon"
+                        android:layout_width="19dp"
+                        android:layout_centerInParent="true"
+                        android:layout_height="19dp"
+                        android:src="@drawable/ic_outline_location_on_24"/>
+
+                </RelativeLayout>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/addresses"
+                    android:layout_centerVertical="true"
+                    android:text="Addresses"
+                    android:layout_toEndOf="@id/addressRel"
+                    android:layout_marginStart="30dp"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="18sp"
+                    android:textColor="#212121"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_round_navigate_next_24"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ordersLayout"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/orderRel"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="3dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/blue_circle">
+
+                    <ImageView
+                        android:id="@id/ordersIcon"
+                        android:layout_width="19dp"
+                        android:layout_centerInParent="true"
+                        android:layout_height="19dp"
+                        app:tint="@color/white"
+                        android:src="@drawable/ic_outline_card_giftcard_24"/>
+
+                </RelativeLayout>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/ordersText"
+                    android:layout_centerVertical="true"
+                    android:text="Orders"
+                    android:layout_toEndOf="@id/orderRel"
+                    android:layout_marginStart="30dp"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="18sp"
+                    android:textColor="#212121"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_round_navigate_next_24"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/darkModeLayout"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/darkModeRel"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="3dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/green_circle">
+
+                    <ImageView
+                        android:id="@+id/darkMode"
+                        android:layout_width="19dp"
+                        android:layout_centerInParent="true"
+                        android:layout_height="19dp"
+                        app:tint="@color/white"
+                        android:src="@drawable/ic_baseline_nightlight_24"/>
+
+                </RelativeLayout>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/nightMode"
+                    android:layout_centerVertical="true"
+                    android:text="Dark Mode"
+                    android:layout_toEndOf="@id/darkModeRel"
+                    android:layout_marginStart="30dp"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="18sp"
+                    android:textColor="#212121"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    app:useMaterialThemeColors="true"
+                    android:shadowColor="@color/green"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_round_navigate_next_24"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/contactUsMode"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/contactUsRel"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="3dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/blue_circle">
+
+                    <ImageView
+                        android:id="@+id/contactIcon"
+                        android:layout_width="19dp"
+                        android:layout_centerInParent="true"
+                        android:layout_height="19dp"
+                        app:tint="@color/white"
+                        android:src="@drawable/ic_phone"/>
+
+                </RelativeLayout>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/contactUsText"
+                    android:layout_centerVertical="true"
+                    android:text="Contact Us"
+                    android:layout_toEndOf="@id/contactUsRel"
+                    android:layout_marginStart="30dp"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="18sp"
+                    android:textColor="#212121"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_round_navigate_next_24"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/signOutModeLayout"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/signOutRel"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="3dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/green_circle">
+
+                    <ImageView
+                        android:id="@+id/signOutIcon"
+                        android:layout_width="19dp"
+                        android:layout_centerInParent="true"
+                        android:layout_height="19dp"
+                        app:tint="@color/white"
+                        android:src="@drawable/ic_baseline_logout_24"/>
+
+                </RelativeLayout>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/signOutText"
+                    android:layout_centerVertical="true"
+                    android:text="Sign Out"
+                    android:layout_toEndOf="@id/signOutRel"
+                    android:layout_marginStart="30dp"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="18sp"
+                    android:textColor="#212121"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_round_navigate_next_24"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include layout="@layout/snippet_bottom_navigation_view" />
+            </RelativeLayout>
+
+        </LinearLayout>
+        
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

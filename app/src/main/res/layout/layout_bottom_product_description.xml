@@ -1,0 +1,209 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="13dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:id="@+id/addToFavouritesBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="20dp"
+                android:layout_alignParentEnd="true"
+                android:elevation="5dp"
+                android:outlineAmbientShadowColor="@color/background_green"
+                android:outlineSpotShadowColor="@color/background_green"
+                android:background="@drawable/ic_add_to_fav" />
+
+        </RelativeLayout>
+
+        <!--Product Description Textview-->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/productDescriptionTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="15sp"
+            android:textColor="@color/heading_green"
+            android:text="This is demo Description of the product and this is going to be it."/>
+
+
+        <!--This is Quantity and Rating section-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--TODO: This is quantity section and it needs to be replaced by spinner later-->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/restaurantNameTv"
+                android:fontFamily="@font/poppins"
+                android:textSize="11sp"
+                android:textColor="@color/hint_text_color"
+                android:text="Restaurant Name"/>
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/foodItemRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:transformPivotX="80dp"
+                android:transformPivotY="7dp"
+                android:numStars="5"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="40dp"
+                android:rating="4.5"
+                android:scaleY="1.4"
+                android:scaleX="1.4"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
+                />
+
+            <!--This is Number of Stars Tv-->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/ratingTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.5"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="19sp"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/green"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+
+
+        <!--Quantity and Price Section-->
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--This is Quantity Section-->
+            <RelativeLayout
+                android:layout_alignParentStart="true"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!--Delete Button-->
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/deleteBtn"
+                        android:text="-"
+                        android:elevation="4dp"
+                        android:layout_marginBottom="5dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/heading_green"
+                        android:background="@drawable/quantity_btn_background"
+                        android:layout_width="25dp"
+                        android:layout_height="34dp"/>
+
+                    <!--Showing Quantity Text View-->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/quantity"
+                        android:layout_width="25dp"
+                        android:layout_height="30dp"
+                        android:text="1"
+                        android:textAlignment="center"
+                        app:fontFamily="@font/poppins"
+                        android:textSize="20sp"
+                        android:textColor="@color/heading_green"/>
+
+                    <!--Add Button-->
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/addBtn"
+                        android:text="+"
+                        android:layout_marginBottom="5dp"
+                        android:elevation="4dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/heading_green"
+                        android:background="@drawable/quantity_add_btn_background"
+                        android:layout_width="25dp"
+                        android:layout_height="34dp"/>
+
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!--This is Price Text View-->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/priceTv"
+                android:text="₹ 90.00"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+
+        <!--Add To Cart btn-->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addToCartBtn"
+            android:layout_marginTop="120dp"
+            android:layout_below="@id/relLayout3"
+            android:layout_width="match_parent"
+            android:text="Add To Cart"
+            android:elevation="4dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:layout_marginBottom="5dp"
+            android:shadowColor="@color/background_green"
+            android:background="@drawable/button_round"
+            android:textAllCaps="false"
+            android:layout_height="wrap_content"/>
+
+        <!--Add To Cart btn-->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/goToCartBtn"
+            android:visibility="gone"
+            android:layout_marginTop="60dp"
+            android:layout_below="@id/relLayout3"
+            android:layout_width="match_parent"
+            android:text="Go to cart"
+            android:elevation="4dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:shadowColor="@color/background_green"
+            android:background="@drawable/button_round"
+            android:textAllCaps="false"
+            android:layout_height="wrap_content"/>
+
+        <!--Add To Cart btn-->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/continueShoppingBtn"
+            android:layout_marginTop="50dp"
+            android:layout_below="@id/relLayout3"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:text="Continue Shopping"
+            android:layout_marginBottom="5dp"
+            android:elevation="4dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:background="@drawable/google_sign_in_button"
+            android:textAllCaps="false"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</merge>

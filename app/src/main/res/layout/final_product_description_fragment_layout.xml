@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey20"
+    android:orientation="vertical">
+
+    <!--Product Image-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <!--Product Image-->
+        <ImageView
+            android:id="@+id/productImage"
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/pizza" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+
+            <!--Like Button-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="20dp"
+                android:outlineSpotShadowColor="@color/orange20"
+                app:cardBackgroundColor="@color/orange"
+                app:cardCornerRadius="25dp">
+
+                <ImageView
+                    android:id="@+id/addToFavouritesBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_filled_heart"
+                    app:tint="@color/white" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <!--Back Button-->
+            <ImageView
+                android:id="@+id/back_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="25dp"
+                android:src="@drawable/ic_black_back_arrow"
+                app:tint="@color/white" />
+
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/productImage"
+            android:layout_marginTop="-30dp"
+            android:background="@drawable/bottom_navigation_bar_background">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="vertical"
+                    android:paddingStart="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="20dp">
+
+                    <!--Food item name-->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/productNameTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/sofiia_regular"
+                        android:text="Tandoori Chicken Pizza"
+                        android:textColor="@color/dark"
+                        android:textSize="26sp" />
+
+
+                    <!--Ratings and price section-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!--Rating Bar-->
+                        <androidx.appcompat.widget.AppCompatRatingBar
+                            android:id="@+id/ratingBar"
+                            style="@style/Widget.AppCompat.RatingBar.Indicator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="-45dp"
+                            android:layout_marginTop="-6dp"
+                            android:numStars="5"
+                            android:scaleX="0.5"
+                            android:scaleY="0.6" />
+                        <!--Ratings Text-->
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/ratingsTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ratingBar"
+                            android:layout_marginTop="-6dp"
+                            android:fontFamily="@font/sofiia_regular"
+                            android:text="4 Star Ratings"
+                            android:textColor="@color/orange" />
+                        <!--Price Text-->
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/priceTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/sofia_regular"
+                            android:text="Rs. 740"
+                            android:textColor="@color/dark"
+                            android:textSize="29sp" />
+                        <!--Per for medium-->
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/perServingTv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/priceTv"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="-6dp"
+                            android:fontFamily="@font/sofiia_regular"
+                            android:text="/ per medium" />
+
+
+                    </RelativeLayout>
+
+
+                    <!--Quantity-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!--Quantity Text-->
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/sofia_regular"
+                            android:text="Quantity"
+                            android:textColor="@color/dark"
+                            android:textSize="20sp" />
+
+                        <include layout="@layout/snippet_quantity_picker" />
+
+                    </RelativeLayout>
+
+                    <!--Size-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!--Quantity Text-->
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/sofia_regular"
+                            android:text="Size"
+                            android:textColor="@color/dark"
+                            android:textSize="20sp" />
+
+                        <include layout="@layout/snippet_size_picker" />
+
+                    </RelativeLayout>
+
+                    <!--Description Text-->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/sofia_regular"
+                        android:text="Description"
+                        android:textColor="@color/dark"
+                        android:textSize="20sp" />
+
+                    <!--Description-->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/descriptionTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:fontFamily="@font/sofiia_regular"
+                        android:lineHeight="19dp"
+                        android:text="@string/default_food_description"
+                        android:textColor="@color/grey"
+                        android:textSize="16sp" />
+
+                    <!--More in Pizzas Text-->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/moreInText"
+                        android:fontFamily="@font/sofia_regular"
+                        android:text="More In Pizzas"
+                        android:textColor="@color/dark"
+                        android:textSize="20sp" />
+
+                    <!--TODO: Use a recycler view to show more items from this
+                    category-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/similarItemsRv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+
+
+                    <!--More in Pizzas Text-->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/sofia_regular"
+                        android:text="Reviews"
+                        android:textColor="@color/dark"
+                        android:textSize="20sp" />
+
+                    <!--Reviews-->
+                    <HorizontalScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <include layout="@layout/final_sample_review_layout" />
+
+                            <include layout="@layout/final_sample_review_layout" />
+
+                            <include layout="@layout/final_sample_review_layout" />
+
+                            <include layout="@layout/final_sample_review_layout" />
+
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
+
+
+
+                </LinearLayout>
+
+
+            </androidx.core.widget.NestedScrollView>
+
+            <!--TODO: Need to set its top margin dynamically -->
+            <RelativeLayout
+                android:id="@+id/buttonHolder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="490dp"
+                android:paddingBottom="70dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <include layout="@layout/snippet_add_to_cart_button" />
+
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/final_snippet_bottom_navigation_bar" />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

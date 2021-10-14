@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:elevation="8dp"
+        app:cardCornerRadius="8dp"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:paddingBottom="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp"
+                android:background="@drawable/white_gray_border_bottom">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/orderImage"
+                    android:layout_width="50dp"
+                    android:src="@drawable/burger1"
+                    android:scaleType="fitXY"
+                    android:layout_height="50dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/restaurantNameTv"
+                    android:text="Dominick Pizza"
+                    android:layout_toEndOf="@id/orderImage"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/black"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/restaurantAddressTv"
+                    android:text="Kharar Road, Mohali"
+                    android:layout_toEndOf="@id/orderImage"
+                    android:layout_below="@id/restaurantNameTv"
+                    android:layout_marginStart="10dp"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/gray"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/priceTv"
+                    android:text="Rs. 104"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/black"/>
+
+            </RelativeLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/itemsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Items"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:textSize="11sp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/hint"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/orderItems"
+                android:text="1 x Capsicum Pizza"
+                android:layout_toEndOf="@id/orderImage"
+                android:layout_marginStart="10dp"
+                android:textSize="11sp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/black"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/orderedOnText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ordered On"
+                android:layout_marginStart="10dp"
+                android:textSize="11sp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/hint"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/orderOnTv"
+                android:text="23 Oct 2020 at 8:22 pm"
+                android:layout_toEndOf="@id/orderImage"
+                android:layout_marginStart="10dp"
+                android:textSize="11sp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/black"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_gray_border_bottom"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

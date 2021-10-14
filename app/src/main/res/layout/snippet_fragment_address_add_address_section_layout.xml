@@ -1,0 +1,43 @@
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--Add address Button-->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_below="@id/rellayout1"
+            android:padding="10dp"
+            android:elevation="4dp"
+            android:outlineSpotShadowColor="@color/background_green"
+            android:background="@drawable/button_round_background_green"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/addAddressBtn"
+                android:layout_width="wrap_content"
+                android:padding="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add"/>
+
+            <TextView
+                android:id="@+id/addAddressTv"
+                android:layout_toRightOf="@id/addAddressBtn"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/poppins"
+                android:layout_width="match_parent"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:text="New Address"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</merge>
+

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LogIn.SignUpActivity">
+
+    
+
+    <LinearLayout
+        android:id="@+id/signUpLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="64dp"
+            android:text="Sign up"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/black"
+            android:textSize="19sp"/>
+
+
+        <EditText
+            android:id="@+id/fullnameinput"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:background="@drawable/editround"
+            android:hint="Full Name"/>
+
+        <EditText
+            android:id="@+id/phonenumberinput"
+            android:layout_marginTop="31dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:inputType="phone"
+            android:background="@drawable/editround"
+            android:hint="Phone Number"/>
+
+        <EditText
+            android:id="@+id/emailinput"
+            android:layout_marginTop="31dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:inputType="textEmailAddress"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:background="@drawable/editround"
+            android:hint="Email"/>
+
+        <EditText
+            android:id="@+id/createpasswordinput"
+            android:layout_marginTop="31dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:background="@drawable/editround"
+            android:hint="Password"/>
+
+        <EditText
+            android:id="@+id/reenterpasswordinput"
+            android:layout_marginTop="31dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:inputType="textPassword"
+            android:background="@drawable/editround"
+            android:hint="Re-enter Password"/>
+
+
+        <Button
+
+            android:id="@+id/sign_up_btn"
+            android:background="@drawable/button_round"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="43dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:text="Sign Up"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_round"
+        android:layout_centerInParent="true">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="gone"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

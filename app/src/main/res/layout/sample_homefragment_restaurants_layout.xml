@@ -1,0 +1,165 @@
+<androidx.cardview.widget.CardView
+    android:layout_width="300dp"
+    app:cardCornerRadius="25dp"
+    android:layout_marginBottom="40dp"
+    android:layout_marginStart="14dp"
+    app:cardElevation="4dp"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:paddingBottom="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--Image Card View-->
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--Restaurant Photo-->
+                <ImageView
+                    android:id="@+id/restaurantPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/burger1"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="70dp"
+                    android:layout_marginStart="15dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="29dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/ratingTv"
+                            android:text="4.5"
+                            android:textColor="@color/dark"
+                            android:layout_marginStart="8dp"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/sofia_regular"/>
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            app:tint="@color/yellow"
+                            android:layout_marginStart="4dp"
+                            android:layout_centerVertical="true"
+                            android:layout_toEndOf="@id/ratingTv"
+                            android:src="@drawable/ic_star"/>
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+
+        <!--Restaurant Name-->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/restaurantNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hat trick"
+            android:fontFamily="@font/sofia_regular"
+            android:textColor="@color/dark"
+            android:layout_marginStart="25dp"
+            android:textSize="20sp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/restaurantAddressTv"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:text="K.p Road Anantnag"
+            android:layout_marginStart="25dp"
+            android:fontFamily="@font/sofiia_regular"
+            android:textSize="15sp"/>
+
+        <!--Delivery Charges-->
+        <LinearLayout
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--Delivery Charges-->
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/bikeIcon"
+                    android:layout_centerVertical="true"
+                    android:layout_width="18dp"
+                    android:layout_height="wrap_content"
+                    app:tint="@color/orange"
+                    android:src="@drawable/ic_baseline_directions_bike_24"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/distanceTv"
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:text="2 Km"
+                    android:layout_toEndOf="@id/bikeIcon"
+                    android:layout_marginStart="3dp"
+                    android:fontFamily="@font/sofiia_regular"
+                    android:textSize="13sp"/>
+
+            </RelativeLayout>
+
+            <!--Delivery Time-->
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/clockIcon"
+                    android:layout_centerVertical="true"
+                    android:layout_width="18dp"
+                    android:layout_height="wrap_content"
+                    app:tint="@color/orange"
+                    android:src="@drawable/ic_clock"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/deliveryTimeTv"
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"
+                    android:text="10 - 15 mins"
+                    android:layout_marginStart="2dp"
+                    android:layout_toEndOf="@id/clockIcon"
+                    android:fontFamily="@font/sofiia_regular"
+                    android:textSize="13sp"/>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

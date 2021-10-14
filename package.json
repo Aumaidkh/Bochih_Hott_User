@@ -1,0 +1,11 @@
+{
+  "name": "bochihhott",
+  "version": "1.0.0",
+  "description": "Food delivery App",
+  "main": "index.js",
+  "scripts": {
+    "test": "Test"
+  },
+  "author": "Murtaza Khursheed",
+  "license": "ISC"
+}

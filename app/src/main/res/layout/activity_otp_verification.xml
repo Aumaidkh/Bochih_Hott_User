@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".LogIn.OtpVerification">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="64dp"
+        android:text="OTP Verification"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/black"
+        android:textSize="19sp"/>
+
+    <View
+        android:layout_width="191.65dp"
+        android:layout_height="120.46dp"
+        android:background="@drawable/otp_verification_illustration"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter otp"
+        android:textSize="15sp"
+        android:textColor="@color/primary_color"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="We have sent an OTP to your number"/>
+
+    <TextView
+        android:id="@+id/textPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="phoneNumber"
+        android:textSize="14sp"
+        android:textColor="@color/green"/>
+
+    <com.chaos.view.PinView
+        android:id="@+id/otpPinView"
+        style="@style/PinWidget.PinView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:cursorVisible="true"
+        android:hint="000000"
+        android:layout_marginTop="10dp"
+        android:inputType="number"
+        android:itemBackground="@color/white"
+        android:padding="10dp"
+        android:textColor="@color/green"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cursorColor="@color/green"
+        app:cursorWidth="2dp"
+        app:hideLineWhenFilled="false"
+        app:itemCount="6"
+        app:itemHeight="48dp"
+        app:itemRadius="6dp"
+        app:itemSpacing="0dp"
+        app:itemWidth="48dp"
+        app:lineColor="@color/background_green"
+        app:lineWidth="2dp"
+        app:viewType="rectangle" />
+
+    <Button
+        android:id="@+id/verifyOtpBtn"
+        android:background="@drawable/button_round"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="43dp"
+        android:textAllCaps="false"
+        android:fontFamily="@font/poppins"
+        android:textStyle="normal"
+        android:textSize="12sp"
+        android:text="Verify"/>
+
+
+</LinearLayout>

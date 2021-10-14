@@ -1,0 +1,3 @@
+//TODO: Need to work on partner login panel
+In partner login when ever a user logs in he should be checked if he is a partner or not and if he is
+he should be directed to the main dashboard

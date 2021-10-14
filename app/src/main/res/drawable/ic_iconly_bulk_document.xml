@@ -1,0 +1,13 @@
+<!--
+  ~ Copyright (c) 2021.
+  ~ All Rights Reserved.
+  ~ BochihHott and BochihHott Partner are properties of Murtaza Khursheed.
+  -->
+
+<vector android:alpha="0.94" android:height="23dp"
+    android:viewportHeight="23" android:viewportWidth="23"
+    android:width="23dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillAlpha="0.4" android:fillColor="#9796a1"
+        android:pathData="M7.485,1.917C4.575,1.917 2.875,3.623 2.875,6.546v9.9c0,2.971 1.7,4.638 4.61,4.638h8.032c2.96,0 4.609,-1.667 4.609,-4.638v-9.9C20.125,3.623 18.475,1.917 15.516,1.917Z" android:strokeAlpha="0.4"/>
+    <path android:fillColor="#9796a1" android:pathData="M7.024,16.244a0.76,0.76 0,0 1,0 -0.806,0.751 0.751,0 0,1 0.718,-0.355L15.256,15.083a0.757,0.757 0,0 1,0 1.5L7.742,16.583a0.7,0.7 0,0 1,-0.093 0.006A0.75,0.75 0,0 1,7.024 16.244ZM7.742,12.21a0.748,0.748 0,0 1,0 -1.5L15.256,10.71a0.748,0.748 0,0 1,0 1.5ZM7.742,7.878A0.747,0.747 0,1 1,7.742 6.383L7.742,6.373L10.609,6.373a0.752,0.752 0,0 1,0 1.5Z"/>
+</vector>

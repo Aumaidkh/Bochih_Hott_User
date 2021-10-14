@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Bochih Hott</string>
+
+    <!--Shopping cart name-->
+    <string name="cart_heading">Shopping cart</string>
+
+    <!--Firebase database-->
+    <string name="db_name_users">users</string>
+    <string name="db_name_user_account_settings">user_account_settings</string>
+    <string name="db_name_food_items">food_items</string>
+
+    <!--Google maps api key-->
+    <string name="maps_api_key">AIzaSyASOMABcec5NDIq7fFloxNksgCFIUrQuqU</string>
+    <string name="default_notification_channel_id">Orders</string>
+    <string name="default_food_description">Pizza is an Italian dish consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and often various other ingredients, which is then baked at a high temperature, traditionally in a wood-fired oven. A small pizza is sometimes called a pizzetta.</string>
+
+    <!--to toggle the open close button
+       of the navigation drawer-->
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
+</resources>

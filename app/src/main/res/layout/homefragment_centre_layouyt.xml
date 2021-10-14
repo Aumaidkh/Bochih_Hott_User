@@ -1,0 +1,207 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.core.widget.NestedScrollView
+        android:paddingBottom="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--What are you looking for text-->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="350dp"
+                android:layout_marginStart="20dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sofia_regular"
+                android:text="What would you like to order?"
+                android:textColor="@color/dark"
+                android:textSize="33sp" />
+
+
+            <!--Search Section-->
+            <RelativeLayout
+                android:layout_marginStart="20dp"
+                android:id="@+id/searchSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/searchBar"
+                    android:layout_width="330dp"
+                    android:layout_height="wrap_content">
+
+                    <include layout="@layout/homefragment_searchbar" />
+
+                </RelativeLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="41dp"
+                    android:layout_height="53dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/white"
+                    app:cardUseCompatPadding="true"
+                    app:icon="@drawable/ic_round_swap_horiz_24"
+                    app:iconGravity="top"
+                    app:iconTint="@color/orange">
+
+
+                </com.google.android.material.button.MaterialButton>
+
+            </RelativeLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/sofiia_medium"
+                android:text="Special Offers"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/dark"
+                android:textSize="20sp" />
+            <!--This is sample offers sections
+           too needs to be populated by a recycler view-->
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <androidx.cardview.widget.CardView
+                        app:cardCornerRadius="25dp"
+                        android:layout_width="330dp"
+                        android:layout_margin="10dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:layout_width="match_parent"
+                            android:layout_height="210dp"
+                            android:id="@+id/offerImages"
+                            android:src="@drawable/offer"/>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        app:cardCornerRadius="25dp"
+                        android:layout_width="330dp"
+                        android:layout_margin="10dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:layout_width="match_parent"
+                            android:layout_height="210dp"
+                            android:id="@+id/offerImages"
+                            android:src="@drawable/offer"/>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        app:cardCornerRadius="25dp"
+                        android:layout_width="330dp"
+                        android:layout_margin="10dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:layout_width="match_parent"
+                            android:layout_height="210dp"
+                            android:id="@+id/offerImages"
+                            android:src="@drawable/offer"/>
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+            <!--Categories Section-->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/sofiia_medium"
+                android:text="Categories"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/dark"
+                android:textSize="20sp" />
+
+             <androidx.recyclerview.widget.RecyclerView
+                 android:layout_margin="10dp"
+                 android:id="@+id/categoriesRv"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
+
+             </androidx.recyclerview.widget.RecyclerView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/foodCategoryHeadingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Showing all pizzas"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/sofiia_medium"
+                android:textColor="@color/dark"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"/>
+
+            <!--Food Items Recycler View-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_margin="10dp"
+                android:id="@+id/foodItemsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+            <!--Restaurants Text-->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/sofiia_medium"
+                android:text="Featured Restaurants"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/dark"
+                android:textSize="20sp" />
+
+            <!--Food Items Recycler View-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_margin="10dp"
+                android:id="@+id/featuredRestaurantsRv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <!--All Restaurants layout-->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/sofiia_medium"
+                android:text="Nearby Restaurants"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/dark"
+                android:textSize="20sp" />
+            <!--This bit of code too needs to be removed instead a recycler view is to be used-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_margin="10dp"
+                android:id="@+id/nearByRestaurantsRv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</merge>

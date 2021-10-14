@@ -1,0 +1,28 @@
+<!--
+  ~ Copyright (c) 2021.
+  ~ All Rights Reserved.
+  ~ BochihHott and BochihHott Partner are properties of Murtaza Khursheed.
+  -->
+
+<vector android:alpha="0.94" android:height="67.001dp"
+    android:viewportHeight="67.001" android:viewportWidth="388"
+    android:width="388dp" xmlns:aapt="http://schemas.android.com/aapt" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#fe724c"
+        android:pathData="M387.5,66.5h0a94.218,94.218 0,0 1,-27.192 -5.317A96.834,96.834 0,0 1,335.568 48.075,102.121 102.121,0 0,1 314.354,27.168 106.318,106.318 0,0 1,299.668 0.5L387.5,0.5Z"
+        android:strokeColor="#00000000" android:strokeWidth="1"/>
+    <path
+        android:pathData="M4,66.5c-1.166,0 -2.344,-0.046 -3.5,-0.137L0.5,27.444a11.872,11.872 0,0 0,3.5 0.527c7.169,0 13,-6.42 13,-14.311A14.545,14.545 0,0 0,10.059 1h40.558A58.063,58.063 0,0 1,52 13.659a57.127,57.127 0,0 1,-3.772 20.569,53.241 53.241,0 0,1 -10.287,16.8 47.856,47.856 0,0 1,-15.258 11.324A43.956,43.956 0,0 1,4 66.5Z"
+        android:strokeColor="#00000000" android:strokeWidth="1">
+        <aapt:attr name="android:fillColor">
+            <gradient android:centerX="26.259493"
+                android:centerY="33.753147"
+                android:gradientRadius="32.753147" android:type="radial">
+                <item android:color="#FFFE724C" android:offset="0"/>
+                <item android:color="#CCFE724C" android:offset="1"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:fillColor="#ffece7"
+        android:pathData="M77.5,63.5c-16.458,0 -32.348,-6.089 -45.953,-17.607a93.455,93.455 0,0 1,-17.509 -19.92A111.425,111.425 0,0 1,1.648 0.5h151.7a111.425,111.425 0,0 1,-12.39 25.473,93.455 93.455,0 0,1 -17.509,19.92C109.848,57.411 93.958,63.5 77.5,63.5Z"
+        android:strokeColor="#00000000" android:strokeWidth="1"/>
+</vector>

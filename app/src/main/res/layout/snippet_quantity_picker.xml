@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="65dp"
+            android:layout_height="68dp"
+            android:backgroundTint="@color/window_background"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:id="@+id/removeQuantityBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:text="-"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="19sp"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/heading_green" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_gravity="center"
+            android:background="@drawable/quantity_hollow_backgrond">
+
+            <!--Showing Quantity Text View-->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/quantity"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01"
+                android:textColor="@color/heading_green"
+                android:textSize="22sp"
+                app:fontFamily="@font/sofiia_regular" />
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="65dp"
+            android:layout_height="68dp"
+            android:backgroundTint="@color/orange"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout android:id="@+id/addQuantityBtn"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="19sp"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/white" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!--Add Button-->
+        <!--<androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addBtn"
+            android:text="+"
+            android:layout_marginBottom="5dp"
+            android:elevation="4dp"
+            android:textAlignment="center"
+            android:textColor="@color/heading_green"
+            android:background="@drawable/quantity_add_btn_background"
+            android:layout_width="25dp"
+            android:layout_height="34dp"/>-->
+
+
+    </LinearLayout>
+</merge>
+
+

@@ -1,0 +1,37 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/first_shimmer"
+            android:src="@drawable/round_profile_shimmer"
+            android:layout_width="25dp"
+            android:layout_centerVertical="true"
+            android:layout_height="25dp"/>
+
+        <ImageView
+            android:layout_centerInParent="true"
+            android:src="@drawable/round_profile_shimmer"
+            android:layout_width="25dp"
+            android:layout_centerVertical="true"
+            android:layout_height="25dp"/>
+
+        <ImageView
+            android:id="@+id/third_shimmer"
+            android:src="@drawable/round_profile_shimmer"
+            android:layout_width="25dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_height="25dp"/>
+
+
+
+    </RelativeLayout>
+
+</merge>

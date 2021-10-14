@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_color">#09B44D</color>
+    <color name="secondary_color">#D0F1DD</color>
+    <color name="hint_text_color">#BCB8B8</color>
+    <color name="splash_screen_status_bar">#3EC272</color>
+    <color name="transparent">#003EC272</color>
+
+    <color name="green">#09B44D</color>
+    <color name="background_green">#D0F1DD</color>
+    <color name="background_green_filter">#9809B44D</color>
+    <color name="background_status_bar_filter">#0009B44D</color>
+    <color name="black">#262626</color>
+    <color name="light_gray">#F6F6F6</color>
+    <color name="white">#FFF</color>
+    <color name="text_input_fields">#E7F5EC</color>
+    <color name="status_bar_color">#00000000</color>
+
+    <color name="link_blue">#FF1A52F8</color>
+    <color name="gray">#9796A1</color>
+    <color name="heading_green">#23613C</color>
+
+    <color name="foreground_image_tint">#35030303</color>
+
+    <!--Shimmer-->
+    <color name="shimmer_gray">#FFC0C3C1</color>
+    <color name="hint">#655F5F</color>
+
+    <color name="primary_text_or_icons">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="window_background">#F8F8F8</color>
+
+    <!--Orange-->
+    <color name="orange">#FE724C</color>
+    <color name="orange80">#FED2C7</color>
+    <color name="orange50">#FED2C7</color>
+    <color name="orange20">#FED2C7</color>
+
+    <!--Yellow-->
+    <color name="yellow">#FFC529</color>
+    <color name="yellow80">#FFD050</color>
+    <color name="yellow50">#FFDF8B</color>
+    <color name="yellow20">#FFEFC3</color>
+
+    <!--Dark-->
+    <color name="dark">#1A1D26</color>
+    <color name="dark80">#2A2F3D</color>
+    <color name="dark50">#4D5364</color>
+    <color name="dark20">#6E7489</color>
+
+    <!--Gray-->
+    <color name="grey">#9A9FAE</color>
+    <color name="grey80">#A8ACB9</color>
+    <color name="grey50">#C4C7D0</color>
+    <color name="grey20">#EBEBEB</color>
+
+</resources>

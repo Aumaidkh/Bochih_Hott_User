@@ -1,0 +1,94 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--Hamburger Menu-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/hamBurgerMenu"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="8dp"
+            app:cardUseCompatPadding="true"
+            >
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="30dp"
+                android:src="@drawable/ic_round_short_text_24"
+                app:tint="@color/dark"
+                android:layout_height="match_parent"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <!--Delivery Location-->
+        <RelativeLayout
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--Deliver TO Text-->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/deliverToText"
+                android:text="Deliver to"
+                android:fontFamily="@font/sofia_regular"
+                android:textSize="19sp"
+                android:textColor="@color/dark"/>
+
+            <!--Down arrow-->
+            <ImageView
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@id/deliverToText"
+                android:layout_marginStart="2dp"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_round_keyboard_arrow_down_24"
+                app:tint="@color/dark"
+                android:layout_height="wrap_content"/>
+
+            <!--Deliver TO Text-->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/locationTv"
+                android:layout_below="@id/deliverToText"
+                android:text="Kadapora, Anantnag, 192101"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/sofiia_regular"
+                android:textSize="14sp"
+                android:textColor="@color/orange"/>
+
+
+
+        </RelativeLayout>
+
+
+        <!--Profile Menu-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profileMenu"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="8dp"
+            android:layout_alignParentEnd="true"
+            app:cardUseCompatPadding="true"
+            >
+
+            <ImageView
+                android:id="@+id/profilePic"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:src="@drawable/burger1"
+                android:scaleType="fitXY"
+                android:layout_height="match_parent"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</merge>

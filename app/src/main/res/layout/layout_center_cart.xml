@@ -1,0 +1,91 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <!--Cart Middle Section-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_below="@id/relLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cartRecyclerView"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!--Promo Section-->
+            <androidx.cardview.widget.CardView
+               android:layout_margin="5dp"
+                android:id="@+id/promoCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="25dp">
+
+               <RelativeLayout
+                   android:paddingStart="40dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="60dp">
+
+                   <EditText
+                       android:id="@+id/promoCodeInput"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:background="#00000000"
+                       android:textSize="17sp"
+                       android:fontFamily="@font/sofiia_regular"
+                       android:hint="Promo Code"/>
+
+                   <com.google.android.material.button.MaterialButton
+                       android:layout_alignParentEnd="true"
+                       android:text="Apply"
+                       android:layout_marginEnd="10dp"
+                       android:fontFamily="@font/sofia_pro_semi_bold"
+                       android:textSize="16sp"
+                       android:textAllCaps="false"
+                       android:layout_width="110dp"
+                       app:cornerRadius="25dp"
+                       android:backgroundTint="@color/orange"
+                       android:layout_height="60dp"/>
+
+               </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:id="@+id/totalSection"
+                android:layout_below="@id/promoCard"
+                android:layout_width="match_parent"
+                android:padding="20dp"
+                android:layout_height="wrap_content">
+
+                <include layout="@layout/snippet_order_total_layout"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/cartButtons"
+                android:layout_below="@id/totalSection"
+                android:layout_width="match_parent"
+                android:padding="20dp"
+                android:layout_marginBottom="44dp"
+                android:layout_height="wrap_content">
+
+                <include layout="@layout/snippet_cart_buttons_layout"/>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</merge>

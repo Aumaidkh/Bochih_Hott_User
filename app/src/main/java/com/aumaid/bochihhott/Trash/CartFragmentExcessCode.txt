@@ -1,0 +1,264 @@
+/**
+     * This method is used to extract the messaging token from the restaurant in database
+     * followed by a call to send the notification to that restaurant, clearing cart and
+     * navigating the user to the next screen*/
+    private void sendNotificationToTheRestaurant(OrderModel order){
+        Log.d(TAG, "sendNotificationToTheRestaurant: Sending Notification ran "+count+++" times");
+        //sendPushNotificationToTheToken("dGVfWQf9SmSHLVNWM_xU5t:APA91bENfhB37RrViGtfIEm3hYoIw-64LSRhWfg_raO_H74OTkJQ72X-fEhbggBeCCu9eBC-MAruTdvXvJLgdbl4Q8EpbVWKyaeyeI400BWOsWwqM5LAnaskpoVBiRAtE3JBUwg2MhjV");
+        order_id = order.getPlaced_order_id();
+       //Log.d(TAG, "checkOrderStatus: Order Id: "+order_id);
+
+        //1. Get the restaurant_id of the food Item
+        String res_id = order.getRestaurant_id();
+        //Log.d(TAG, "checkOrderStatus: Restaurant Id: "+res_id);
+
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference("messaging_tokens/restaurants");
+
+        mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //Log.d(TAG, "onDataChange: Finding messaging token for the restaurant Id ");
+                String messaging_token;
+                for(DataSnapshot ds: snapshot.getChildren()){
+                    //Log.d(TAG, "onDataChange: Datasnapshot key: "+ds.getKey());
+                    if(ds.getKey().matches(res_id)){
+                      //  //Log.d(TAG, "onDataChange: "+ds.getValue());
+                       messaging_token = ds.getValue().toString();
+                       sendPushNotificationToTheToken(messaging_token,"order",12);
+                       clearCart();
+                       showWidgets();
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+//        mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                String messaging_token;
+//                //2. Get its messaging token
+//              //  //Log.d(TAG, "onDataChange: Snapshot "+snapshot);
+//                for(DataSnapshot ds: snapshot.getChildren()){
+//                    if(ds.getKey().matches(res_id)){
+//                        //Log.d(TAG, "onDataChange: Snapshot "+ds);
+//                        Partner partner = ds.getValue(Partner.class);
+//                        messaging_token = partner.getMessaging_token();
+//                        //Log.d(TAG, "onDataChange: Messaging Token");
+//                        sendPushNotificationToTheToken(messaging_token);
+//                        showWidgets();
+//                        clearCart();
+//
+//                    }
+//                }
+////                Partner partner = snapshot.getValue(Partner.class);
+//            //    //Log.d(TAG, "onDataChange: Restaurant Name: "+partner.getName());
+//                //3. Send a push notification to the restaurant_id
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
+
+//        mDatabaseReference = FirebaseDatabase.getInstance().getReference("pending_orders");
+//        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for(DataSnapshot ds: snapshot.getChildren()){
+//                    //Log.d(TAG, "orderStatus: Checking order Status "+order_id);
+//
+//                    PlacedOrderModel order = ds.getValue(PlacedOrderModel.class);
+//                    if(order.getPlaced_order_id().matches(order_id)){
+//                        //Log.d(TAG, "onDataChange: Order found Checking its status");
+//                        if(order.getStatus().matches("confirm")){
+//                            //Log.d(TAG, "onDataChange: Your order has been confirmed");
+//                            showWidgets();
+//                            clearCart();
+//
+//                            //Add order to placed orders
+//                            placedOrderDao.addToPlacedOrders(order);
+//
+//                            //Send a push Notification to the Partner To confirm The order
+//                            /*
+//                            * 1. Fetch Partner Token from the database
+//                            * 2. Send Push Notification to the partner
+//                            * */
+//
+//                            clearPendingOrder(order);
+//
+//                        }else{
+//                            //Log.d(TAG, "onDataChange: Please wait while your order is being confirmed");
+//                        }
+//                    }
+//
+//                }
+//
+//            }
+//
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
+    }
+
+     /**
+         * This method saves an order to the pending orders section of the firebase, then initiates a call
+         * to the sendNotificationToTheRestaurant*/
+        private void placeOrder(){
+            Log.d(TAG, "Placed Order: Placed Order()  ran "+count+++" times");
+            // //Log.d(TAG, "placeOrder: Length of array list is "+items.size());
+            //Save address to the database
+            if(!callingFragment.matches("AddressSelectorFragment")){
+                addressDao.saveAddress(address);
+            }
+            //Log.d(TAG, "placeOrder: Address Id: "+address.getAddress_id());
+            //Generate Order
+           /* PlacedOrderModel order = new PlacedOrderModel(
+                    customer_id,
+                    address.getAddress_id(),
+                    calculateDeliveryTime(),
+                    price,
+                    getOrderTime(),
+                    restaurant_id,
+                    getOrderTime()
+            );*/
+
+            if(items.isEmpty()){
+                //Log.d(TAG, "placeOrder: Empty arraylist");
+            }
+
+
+
+            OrderModel order = new OrderModel(
+                    customer_id,
+                    address.getAddress_id(),
+                    calculateDeliveryTime(),
+                    price,
+                    getOrderTime(),
+                    restaurant_id,
+                    getOrderTime(),
+                    items
+            );
+
+            Log.d(TAG, "placeOrder: Array Length Before Placing Order: "+items.size());
+            //Save Order
+            //placedOrderDao.placeOrder(order);
+           // sendNotificationToTheRestaurant(order);
+            //wait for confirmation
+        }
+
+
+
+            /**
+             * This method is used to assign values for the variables from the previous intent*/
+            private void receiveDataFromPreviousIntent() {
+                Log.d(TAG, "receiveDataFromPreviousIntent: Receiving incomplete order");
+
+                Bundle bundle = this.getArguments();
+                address = new Address(
+                        bundle.get("ADDRESS_LINE_1").toString(),
+                        bundle.get("LANDMARK").toString(),
+                        bundle.get("VILLAGE").toString(),
+                        bundle.get("CITY").toString(),
+                        bundle.get("PIN_CODE").toString()
+                );
+
+                address.setAddress_id(bundle.get("ADDRESS_ID").toString());
+
+                callingFragment = bundle.get("CALLING_FRAGMENT_NAME").toString();
+                price = Float.parseFloat( bundle.get("GRAND_TOTAL").toString());
+            }
+
+            /**
+             * This is cart items section*/
+            /**
+             * This method is used to clear the cart items*/
+            private void clearCart(){
+                cartDao = new CartDao(getContext());
+                cartDao.clearCart();
+            }
+
+            /**
+             * This method is used to get the items from the database into the cart*/
+            private void getItemsFromCart(){
+                Log.d(TAG, "Get Items : getItemsFromCart()  ran "+count+++" times");
+                // //Log.d(TAG, "getItemsFromCart: getting cart items");
+                //Query database to find the items in the
+                mDatabaseReference = FirebaseDatabase.getInstance().getReference("user_data/"+mAuth.getUid()+"/cart");
+                mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        int count = 1;
+
+                        for(DataSnapshot ds: snapshot.getChildren()){
+
+                          //  Log.d(TAG, "onDataChange: Cart Items");
+                            Log.d(TAG, "onDataChange: "+count+++"th Iteration");
+
+                         //    Log.d(TAG, "onDataChange: ds: "+ds);
+                            CartItem_ item = ds.getValue(CartItem_.class);
+                            // //Log.d(TAG, "onDataChange: Item Name: "+item.getItem().getItem_name());
+                            items.add(item);
+
+                            //Log.d(TAG, "onDataChange: Items In ArrayList: "+items.toString());
+
+                        }
+
+                        Log.d(TAG, "onDataChange: Array Length: After Getting items from cart "+items.size());
+
+
+
+
+                        placeOrder();
+
+                        //  //Log.d(TAG, "onDataChange: Number of items in cart: "+items.size());
+
+                        //Log.d(TAG, "onDataChange: cart items added to the array list");
+                        /*//Log.d(TAG, "onDataChange: cart items added to the array list");
+                        //Log.d(TAG, "onDataChange: cart items added to the array list");
+                        //Log.d(TAG, "onDataChange: cart items added to the array list");
+        */
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+            }
+
+            /**
+             * This is orders section*/
+
+            private void clearPendingOrder(PlacedOrderModel orderModel){
+                placedOrderDao.clearPendingOrder(orderModel);
+            }
+
+                private void init(){
+                    //  //Log.d(TAG, "init: Initializing Fragment");
+                    items = new ArrayList<>();
+                    addressDao = new AddressDao(getContext());
+                    placedOrderDao = new PlacedOrderDao(getContext());
+                    mAuth = FirebaseAuth.getInstance();
+                    customer_id = mAuth.getCurrentUser().getUid();
+                    mDatabaseReference = FirebaseDatabase.getInstance().getReference("cart/"+mAuth.getCurrentUser().getUid());
+                    // items = new ArrayList<>();
+                    //Get Items from the cart
+                    getItemsFromCart();
+
+                }

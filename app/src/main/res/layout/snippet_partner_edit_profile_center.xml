@@ -1,0 +1,32 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/productPhoto"
+            android:layout_centerHorizontal="true"
+            android:layout_width="150dp"
+            android:elevation="8dp"
+            android:outlineAmbientShadowColor="@color/green"
+            android:layout_height="150dp"
+            app:civ_border_width="5dp"
+            app:civ_border_color="@color/background_green"
+            />
+
+        <TextView
+            android:layout_below="@id/productPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Restaurant Photo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/green"
+            />
+
+    </RelativeLayout>
+
+</merge>

@@ -1,0 +1,39 @@
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <!--Cart Middle Section-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/favRecyclerView"
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <Button
+                android:id="@+id/placeOrderBtn"
+                android:background="@drawable/button_round"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="13dp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins_semibold"
+                android:textStyle="normal"
+                android:textSize="12sp"
+                android:text="Add to Cart"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</merge>

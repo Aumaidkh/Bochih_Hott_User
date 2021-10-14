@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <RelativeLayout
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="138dp"
+        android:padding="20dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageCard"
+            android:layout_centerVertical="true"
+            app:cardCornerRadius="20dp"
+            android:layout_width="100dp"
+            android:layout_height="130dp">
+
+            <ImageView
+                android:id="@+id/productImage"
+                android:layout_width="match_parent"
+                android:scaleType="fitXY"
+                android:layout_height="match_parent"
+                android:src="@drawable/burger1"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_toEndOf="@id/imageCard"
+            android:orientation="vertical"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="110dp">
+
+            <RelativeLayout
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.5"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/ratingTv"/>
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/ratingTv"
+                    app:tint="@color/yellow"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_star"/>
+
+                <ImageView
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/favoritesIcon"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@+id/favorites"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    app:tint="@color/orange"
+                    android:src="@drawable/ic_cancek"/>
+
+            </RelativeLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/cartInfoTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:fontFamily="@font/poppins"
+                android:text="Classic Fruit Salad"
+                android:textColor="@color/primary_text_or_icons"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_marginTop="1dp"
+                android:id="@+id/restaurantName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pizzas"
+                android:fontFamily="@font/sofila_pro_light"
+                android:textColor="@color/gray"
+                android:textSize="12sp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/itemPriceTv"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_height="wrap_content"
+                    android:text="Rs 100"
+                    android:layout_marginEnd="35dp"
+                    android:fontFamily="@font/sofiia_regular"
+                    android:textColor="@color/dark"
+                    android:textSize="20sp"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+
+                   >
+
+                    <include layout="@layout/snippet_cart_quantity_picker"/>
+
+                    <!--Add Button-->
+                    <!--<androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/addBtn"
+                        android:text="+"
+                        android:layout_marginBottom="5dp"
+                        android:elevation="4dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/heading_green"
+                        android:background="@drawable/quantity_add_btn_background"
+                        android:layout_width="25dp"
+                        android:layout_height="34dp"/>-->
+
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

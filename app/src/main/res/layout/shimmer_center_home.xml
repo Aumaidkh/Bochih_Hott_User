@@ -1,0 +1,282 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="12dp"
+                    android:elevation="4dp">
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="20dp"
+                        android:background="@color/shimmer_gray"/>
+
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="12dp"
+                    android:elevation="4dp">
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="20dp"
+                        android:background="@color/shimmer_gray"/>
+
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="12dp"
+                    android:elevation="4dp">
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="20dp"
+                        android:background="@color/shimmer_gray"/>
+
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+            </LinearLayout>
+
+            <!--Popular Foods Section Heading-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                >
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_alignParentStart="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/shimmer_gray"
+                    android:text="Popular Foods"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/shimmer_gray"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/viewAllPopularFoodsBtn"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:textColor="@color/green"
+                    android:textSize="10sp"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/poppins"
+                    android:background="@drawable/shimmer_view_all_button_background"/>
+
+            </RelativeLayout>
+
+            <!--Popular Foods Recycler View-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="155dp"
+                    app:cardCornerRadius="6dp"
+                    android:layout_marginStart="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/popularFoodItemImage"
+                            android:layout_width="155dp"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:background="@color/shimmer_gray"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/image"
+                            android:layout_toEndOf="@id/popularFoodItemImage"
+                            android:layout_width="155dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:background="@color/shimmer_gray"
+
+                            />
+
+                        <ImageView
+                            android:layout_toEndOf="@id/image"
+                            android:layout_width="155dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:background="@color/shimmer_gray"
+
+                            />
+
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <!--Sponsored Section Heading-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                >
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_alignParentStart="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Special Offers"
+                    android:background="@color/shimmer_gray"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/shimmer_gray"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/viewAllSponsoredFoodsBtn"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:textColor="@color/green"
+                    android:textSize="10sp"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/poppins"
+                    android:background="@drawable/shimmer_view_all_button_background"/>
+
+            </RelativeLayout>
+
+            <!--Special Offers Foods Recycler View-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    app:cardCornerRadius="6dp"
+                    android:layout_margin="5dp">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/specialOfferedFoodItemImage"
+                            android:layout_width="290dp"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:background="@color/shimmer_gray"
+                            />
+
+                        <ImageView
+                            android:id="@+id/specialOfferedFoodItemImag"
+                            android:layout_width="290dp"
+                            android:layout_toEndOf="@id/specialOfferedFoodItemImage"
+                            android:layout_marginStart="20dp"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:background="@color/shimmer_gray"
+                            />
+
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <!--All Food Items Heading-->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_margin="10dp"
+                android:layout_alignParentStart="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/shimmer_gray"
+                android:text="All Foods"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/shimmer_gray"/>
+
+            <!-- Foods Items Recycler View-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="60dp">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:elevation="4dp"
+                    app:cardCornerRadius="4dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:background="@color/shimmer_gray"/>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</merge>

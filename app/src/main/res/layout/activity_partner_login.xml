@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LogIn.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:layout_marginBottom="64dp"
+            android:text="Partner Login"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/black"
+            android:textSize="19sp"/>
+
+        <EditText
+            android:id="@+id/restaurantId"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:background="@drawable/editround"
+            android:hint="Restaurant-Id"/>
+
+        <EditText
+            android:id="@+id/restaurantPassword"
+            android:layout_marginTop="31dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:inputType="textPassword"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"
+            android:background="@drawable/editround"
+            android:hint="password"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:text="Forgot password?"
+            android:fontFamily="@font/poppins"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:background="#00000000"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_color"
+            android:layout_gravity="start"/>
+
+        <Button
+            android:id="@+id/partner_login_btn"
+            android:background="@drawable/button_round"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="43dp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins"
+            android:textStyle="normal"
+            android:textSize="12sp"
+            android:text="login"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:textSize="12sp"
+                android:text="Not a member?"/>
+
+            <Button
+                android:onClick="joinNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Join now"
+                android:textSize="12sp"
+                android:textColor="@color/primary_color"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_centerInParent="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="gone"/>
+
+</RelativeLayout>

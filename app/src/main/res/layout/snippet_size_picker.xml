@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/smallCardButton"
+            android:layout_width="65dp"
+            android:layout_height="68dp"
+            android:backgroundTint="@color/window_background"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:id="@+id/removeQuantityBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/sText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:text="S"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="19sp"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/heading_green" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mediumCardButton"
+            android:layout_width="65dp"
+            android:layout_marginStart="-10dp"
+            android:layout_marginEnd="-10dp"
+            android:layout_height="68dp"
+            android:backgroundTint="@color/window_background"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout android:id="@+id/medium"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/mText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="19sp"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/dark" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/largeCardButton"
+            android:layout_width="65dp"
+            android:layout_height="68dp"
+            android:backgroundTint="@color/orange"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout android:id="@+id/addQuantityBtn"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/lText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="L"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="19sp"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/white" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!--Add Button-->
+        <!--<androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addBtn"
+            android:text="+"
+            android:layout_marginBottom="5dp"
+            android:elevation="4dp"
+            android:textAlignment="center"
+            android:textColor="@color/heading_green"
+            android:background="@drawable/quantity_add_btn_background"
+            android:layout_width="25dp"
+            android:layout_height="34dp"/>-->
+
+
+    </LinearLayout>
+</merge>
+
+

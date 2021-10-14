@@ -1,0 +1,30 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profilePhoto"
+            android:layout_width="132dp"
+            android:layout_height="132dp"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="2dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/displayName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Abdul Samad"
+            android:textColor="@color/black"
+            android:layout_below="@id/profilePhoto"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textSize="20sp"
+            />
+
+    </RelativeLayout>
+</merge>

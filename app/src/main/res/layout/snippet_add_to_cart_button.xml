@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--Add To Cart Button-->
+    <RelativeLayout
+        android:id="@+id/addToCartBtn"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:backgroundTint="@color/orange"
+            app:cardCornerRadius="35dp"
+            android:outlineSpotShadowColor="@color/orange50"
+            android:layout_width="200dp"
+            android:padding="10dp"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--Shopping Bag Icon-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/shoppingBagCard"
+                    android:layout_centerVertical="true"
+                    android:layout_width="40dp"
+                    app:cardCornerRadius="40dp"
+                    android:layout_height="40dp">
+
+                    <ImageView
+                        android:src="@drawable/ic_shopping_bag"
+                        android:layout_gravity="center"
+                        app:tint="@color/orange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <!--Add To Cart Text-->
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_centerInParent="true"
+                    android:text="Add To Cart"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/sofiia_medium"
+                    android:layout_width="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</merge>

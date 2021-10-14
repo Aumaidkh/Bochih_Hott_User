@@ -1,0 +1,279 @@
+package com.aumaid.bochihhott.Trash;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+import com.aumaid.bochihhott.Favorites.FavoritesActivity;
+import com.aumaid.bochihhott.Firebase.FirebaseMessagingService;
+import com.aumaid.bochihhott.Home.HomeFragment;
+import com.aumaid.bochihhott.Profile.ProfileActivity;
+import com.aumaid.bochihhott.R;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import static com.aumaid.bochihhott.Constants.Constants.ERROR_DIALOG_REQUEST;
+import static com.aumaid.bochihhott.Constants.Constants.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION;
+import static com.aumaid.bochihhott.Constants.Constants.PERMISSIONS_REQUEST_ENABLE_GPS;
+
+public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+    private static final String TAG = "HomeActivity";
+    private static final int ACTIVITY_NUMBER = 0;
+
+    private FirebaseMessagingService messagingService;
+
+
+    private Context mContext;
+
+    private boolean mLocationPermissionGranted = false;
+
+    /**
+     * Variables Section*/
+    /**
+     * Change this variable later just to make sure it shows all types of foods in the beginning*/
+    private String category = "pizzas";
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+
+        //Status bar color
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+        messagingService = new FirebaseMessagingService();
+
+        mContext = HomeActivity.this;
+
+        setupBottomNavigationView();
+
+        initFCM();
+        init();
+
+
+    }
+
+    /**
+     * This method is used for the functioning of
+     * Bottom Navigation bar*/
+    private void setupBottomNavigationView(){
+        Log.d(TAG, "setupBottomNavigationView: setting up bottomNavigationView");
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavViewBar);
+        /*
+         * disabling animations in navbar
+         * */
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+    }
+
+
+    private void initFCM(){
+        Log.d(TAG, "initFCM: Retrieving current Registration Token");
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+                        Log.d(TAG, "onComplete: Registration Token: "+task.getResult());
+                        messagingService.sendRegistrationToServer(token);
+                    }
+                });
+
+    }
+
+    private void init(){
+        Log.d(TAG, "init: Inflating Profile Fragment");
+
+        HomeFragment fragment = new HomeFragment();
+        FragmentTransaction transaction = HomeActivity.this.getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container,fragment);
+        transaction.addToBackStack("Profile Fragment");
+        transaction.commit();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    private boolean checkMapServices(){
+        if(isServicesOK()){
+            if(isMapsEnabled()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("This application requires GPS to work properly, do you want to enable it?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        Intent enableGpsIntent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        startActivityForResult(enableGpsIntent,PERMISSIONS_REQUEST_ENABLE_GPS);
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    public boolean isMapsEnabled(){
+        final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
+
+        if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
+            buildAlertMessageNoGps();
+            return false;
+        }
+        return true;
+    }
+
+    private void getLocationPermission() {
+        /*
+         * Request location permission, so that we can get the location of the
+         * device. The result of the permission request is handled by a callback,
+         * onRequestPermissionsResult.
+         */
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                android.Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mLocationPermissionGranted = true;
+            //Use application is intended to
+            init();
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+        }
+    }
+
+    public boolean isServicesOK(){
+        Log.d(TAG, "isServicesOK: checking google services version");
+
+        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(mContext);
+
+        if(available == ConnectionResult.SUCCESS){
+            //everything is fine and the user can make map requests
+            Log.d(TAG, "isServicesOK: Google Play Services is working");
+            return true;
+        }
+        else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
+            //an error occured but we can resolve it
+            Log.d(TAG, "isServicesOK: an error occured but we can fix it");
+            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(HomeActivity.this, available, ERROR_DIALOG_REQUEST);
+            dialog.show();
+        }else{
+            Toast.makeText(this, "You can't make map requests", Toast.LENGTH_SHORT).show();
+        }
+        return false;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        mLocationPermissionGranted = false;
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    mLocationPermissionGranted = true;
+                }
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d(TAG, "onActivityResult: called.");
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST_ENABLE_GPS: {
+                if(mLocationPermissionGranted){
+                    //Use the application as it is intended
+                    init();
+                }
+                else{
+                    getLocationPermission();
+                }
+            }
+        }
+
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        //run app as it is intended to
+        if(checkMapServices()){
+            if(mLocationPermissionGranted){
+                init();
+            }else{
+                getLocationPermission();
+            }
+        }
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.home:
+                Intent home_intent = new Intent(getApplicationContext(),HomeActivity.class);
+               // getSupportFragmentManager().beginTransaction().replace(R.id.container, productFragment).commit();
+                Log.d(TAG, "onNavigationItemSelected: Product Fragment Tapped");
+                startActivity(home_intent);
+                return true;
+
+            case R.id.cart:
+                Intent cart_intent = new Intent(getApplicationContext(), CartActivity.class);
+               // getSupportFragmentManager().beginTransaction().replace(R.id.container, ordersFragment).commit();
+                Log.d(TAG, "onNavigationItemSelected: Orders Fragment Tapped");
+                startActivity(cart_intent);
+                return true;
+
+            case R.id.favorites:
+                Intent favorites_intent = new Intent(getApplicationContext(), FavoritesActivity.class);  Log.d(TAG, "onNavigationItemSelected: Stats Fragment Tapped");
+                startActivity(favorites_intent);
+                return true;
+
+            case R.id.options:
+                Intent options_intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(options_intent);
+        }
+        return false;
+    }
+}

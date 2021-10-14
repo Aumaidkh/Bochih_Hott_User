@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="4dp"
+        app:cardCornerRadius="8dp"
+        android:elevation="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:padding="13dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/burger1"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/background_green"
+                app:civ_border_overlay="@bool/blur_dialog_has_bottom_navigation_bar"
+                android:id="@+id/itemPhoto"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Double Patty Burger"
+                android:layout_toEndOf="@id/itemPhoto"
+                android:layout_marginStart="23dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/hasgrotext_small"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rs 200"
+                android:layout_toEndOf="@id/itemPhoto"
+                android:layout_below="@id/item_name"
+                android:layout_marginStart="23dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/hasgrotext_small"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:elevation="8dp"
+                android:background="#00000000"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/ic_baseline_remove_circle_outline_24"
+                android:id="@+id/removeBtn"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_below="@id/removeBtn"
+                android:layout_marginTop="10dp"
+                android:id="@+id/ratings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.5"
+                android:textSize="17sp"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/black"
+                android:fontFamily="@font/hasgrotext_small"/>
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:layout_below="@id/ratings"
+                android:id="@+id/ratings_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:transformPivotX="80dp"
+                android:transformPivotY="7dp"
+                android:numStars="5"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_alignParentEnd="true"
+                android:rating="4.5"
+                android:scaleY="0.8"
+                android:scaleX="0.8"
+                />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
