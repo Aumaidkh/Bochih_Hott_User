@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aumaid.bochihhott.FinalAdapters.FeaturedFoodItemAdapter;
 import com.aumaid.bochihhott.FinalAdapters.FinalMenuAdapter;
 import com.aumaid.bochihhott.FinalAdapters.FoodItemAdapter;
+import com.aumaid.bochihhott.FinalAdapters.OffersAdapter;
 import com.aumaid.bochihhott.FinalAdapters.SliderAdapter;
 import com.aumaid.bochihhott.Interfaces.CategoriesOptionListener;
 import com.aumaid.bochihhott.Interfaces.FoodItemListener;
@@ -34,6 +35,7 @@ import com.aumaid.bochihhott.Models.FoodItem;
 import com.aumaid.bochihhott.Models.MenuItem;
 import com.aumaid.bochihhott.Models.Partner;
 import com.aumaid.bochihhott.R;
+import com.aumaid.bochihhott.Utils.CarouselHelper;
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -70,6 +72,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
     private TextView mSeeReviews;
 
     private FoodItemAdapter foodItemAdapter;
+    private FoodItemAdapter foodAdapter;
 
     private View view;
 
@@ -199,7 +202,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
         mSelectedCategoryFoodItem = new ArrayList<>();
         mOffers = new ArrayList<>();
 
-        RecyclerView mFoodItemsRv = view.findViewById(R.id.restaurantMenuItemsRv);
+        RecyclerView mFoodItemsRv = view.findViewById(R.id.restaurantMenuRv);
         foodItemAdapter = new FoodItemAdapter(mFoodItems,getActivity(),this);
         mFoodItemsRv.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
         foodItemAdapter.notifyDataSetChanged();
@@ -249,8 +252,113 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
 
 
     }
-    private void loadRecyclerViews(){
+    private void initOffersAdapter(){
+        //Automatic Sliding Duration
         final int time = 4000;
+        RecyclerView offersRecyclerView = view.findViewById(R.id.offersRv);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        OffersAdapter offersAdapter = new OffersAdapter(mOffers,getActivity());
+        offersRecyclerView.setLayoutManager(layoutManager);
+        offersRecyclerView.setAdapter(offersAdapter);
+
+        //Automatic Sliding of adapter
+        CarouselHelper.slide(offersRecyclerView,layoutManager,offersAdapter);
+
+    }
+    /**
+     * This method is used to populate the food items Recycler view
+     * Note: in future it must show the items from the category user clicks on */
+    private void setUpFoodItemsRView(String category, View view){
+        Log.d(TAG, "setUpFoodItemsRView: Category: "+category+" View :"+view);
+        TextView mFoodCategoryHeadingText = view.findViewById(R.id.menuItemHeading);
+        mFoodCategoryHeadingText.setText(category+"'s");
+        // shimmerFrameLayout.startShimmer();
+        RecyclerView mFoodItemsRecycler = view.findViewById(R.id.foodItemsRv);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        mFoodItemsRecycler.setHasFixedSize(true);
+        mFoodItemsRecycler.setLayoutManager(linearLayoutManager);
+
+        // adapter = new FoodItemAdapter(mFoodItems,mContext,this);
+        foodAdapter = new FoodItemAdapter(mSelectedCategoryFoodItem,getActivity(),this);
+        mFoodItemsRecycler.setAdapter(foodAdapter);
+
+        //Getting the data from firebase
+        loadRecyclerViewData(category);
+
+
+    }
+
+    private void loadRecyclerViewData(String category){
+        Log.d(TAG, "loadRecyclerViewData: Loading Data Starting shimmer");
+//Tweak this method so that is shows the food of the selected category
+        //Firebase
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //Clearing the ArrayList first
+                mSelectedCategoryFoodItem.clear();
+
+                //Declaring restaurant
+                // Restaurant restaurant = new Restaurant();
+
+
+
+                //Receiving Data
+                for (DataSnapshot ds : snapshot.child("categories").child(category).getChildren()) {
+                    // Log.d(TAG, "onDataChange: "+ds);
+//                    FoodItemRV itemRV = new FoodItemRV();
+//                    Partner restaurant = new Partner();
+                    FoodItem foodItem = ds.getValue(FoodItem.class);
+                    mSelectedCategoryFoodItem.add(foodItem);
+                    //Storing The key of the restaurant id into a variable
+                    //  String restaurantId = foodItem.getRestaurant_id();
+
+                    // Log.d(TAG, "onDataChange: Food Restaurant Id: "+restaurantId);
+
+                    //Getting the Restaurant with the restaurantId
+//                    for(DataSnapshot dataSnapshot: snapshot.child("restaurants").getChildren()){
+//
+//                        //Problematic snippet here
+//                        if(dataSnapshot.getKey().equals(restaurantId)){
+//                            restaurant = dataSnapshot.getValue(Partner.class);
+//
+//                            itemRV = new FoodItemRV(
+//                                    foodItem.getItem_photo(),
+//                                    restaurant.getName(),
+//                                    restaurant.getAddress(),
+//                                    foodItem.getCategory_id(),
+//                                    foodItem.getItem_ratings(),
+//                                    Float.parseFloat(foodItem.getPrice()));
+//                            mFoodItems.add(itemRV);
+//                        }
+//
+//                    }
+
+                }
+
+
+                foodAdapter.notifyDataSetChanged();
+                Log.d(TAG, "onDataChange: Data Received Data hiding shimmer");
+                //TODO: Hide Shimmer Here
+                //hideShimmer();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+    }
+
+
+    private void loadRecyclerViews(){
+        initOffersAdapter();
         //For Featured Items add all those items with rating more than 4.5
         // and length of array list should be 10 only;
         RecyclerView mFeaturedFoodItemsRv = view.findViewById(R.id.restaurantFeaturedItemsRv);
@@ -260,27 +368,8 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
         mFeaturedFoodItemsRv.setLayoutManager(featuredLinearLayoutManger);
         mFeaturedFoodItemsRv.setAdapter(featuredFoodItemAdapter);
 
-        //The LinearSnapHelper will snap the center of the target child view to the center of the attached RecyclerView , it's optional if you want , you can use it
-        final LinearSnapHelper linearSnapHelper = new LinearSnapHelper();
-        linearSnapHelper.attachToRecyclerView(mFeaturedFoodItemsRv);
-
-        final Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-
-            @Override
-            public void run() {
-
-                if (featuredLinearLayoutManger.findLastCompletelyVisibleItemPosition() < (featuredFoodItemAdapter.getItemCount() - 1)) {
-
-                    featuredLinearLayoutManger.smoothScrollToPosition(mFeaturedFoodItemsRv, new RecyclerView.State(), featuredLinearLayoutManger.findLastCompletelyVisibleItemPosition() + 1);
-                }
-
-                else if (featuredLinearLayoutManger.findLastCompletelyVisibleItemPosition() == (featuredFoodItemAdapter.getItemCount() - 1)) {
-
-                    featuredLinearLayoutManger.smoothScrollToPosition(mFeaturedFoodItemsRv, new RecyclerView.State(), 0);
-                }
-            }
-        }, 0, time);
+        //Automatic Sliding Effect
+        CarouselHelper.slide(mFeaturedFoodItemsRv,featuredLinearLayoutManger,featuredFoodItemAdapter);
 
         RecyclerView mRestaurantMenuRv = view.findViewById(R.id.restaurantMenuRv);
         FinalMenuAdapter FinalMenuAdapter
@@ -289,32 +378,32 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
         mRestaurantMenuRv.setAdapter(FinalMenuAdapter);
 
         //Offers Carousel
-        SliderView sliderView = view.findViewById(R.id.slider);
+      //  SliderView sliderView = view.findViewById(R.id.slider);
         // after adding data to our array list we are passing
         // that array list inside our adapter class.
-        SliderAdapter sliderAdapter = new SliderAdapter(getActivity(), mOffers);
+      //  SliderAdapter sliderAdapter = new SliderAdapter(getActivity(), mOffers);
 
         // belows line is for setting adapter
         // to our slider view
-        sliderView.setSliderAdapter(sliderAdapter);
+      //  sliderView.setSliderAdapter(sliderAdapter);
 
         // below line is for setting animation to our slider.
-        sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+      //  sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
 
         // below line is for setting auto cycle duration.
-        sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
+      //  sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
 
         // below line is for setting
         // scroll time animation
-        sliderView.setScrollTimeInSec(3);
+     //   sliderView.setScrollTimeInSec(3);
 
         // below line is for setting auto
         // cycle animation to our slider
-        sliderView.setAutoCycle(true);
+     //   sliderView.setAutoCycle(true);
 
         // below line is use to start
         // the animation of our slider view.
-        sliderView.startAutoCycle();
+      //  sliderView.startAutoCycle();
 
 
         //For Menu Recycle the same home page categories however names of these categories
@@ -341,14 +430,17 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
     public void onCategoryClicked(int position) {
 
         mSelectedCategoryFoodItem.clear();
-        String selectedCategory = menu.get(position).getCategory_name();
-        //Log.d(TAG, "onCategoryClicked: Category "+selectedCategory+" clicked");
-        for(int i=0;i<mFoodItems.size();i++){
-            FoodItem item = mFoodItems.get(i);
-            if(item.getCategory_id().matches(selectedCategory)){
-                mSelectedCategoryFoodItem.add(item);
-            }
-        }
+        MenuItem selectedCategory = menu.get(position);
+        selectedCategory.setSelected(true);
+//        Log.d(TAG, "onCategoryClicked: Category "+selectedCategory.getCategory_name()+" clicked");
+//        for(int i=0;i<mFoodItems.size();i++){
+//            FoodItem item = mFoodItems.get(i);
+//            if(item.getCategory_id().matches(selectedCategory.getCategory_name())){
+//                mSelectedCategoryFoodItem.add(item);
+//            }
+//        }
+//
+      //  setUpFoodItemsRView(selectedCategory.getCategory_name(),view);
 
         foodItemAdapter.notifyDataSetChanged();
     }
