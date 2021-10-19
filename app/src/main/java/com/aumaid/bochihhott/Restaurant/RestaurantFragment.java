@@ -6,6 +6,7 @@
 
 package com.aumaid.bochihhott.Restaurant;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,6 +36,7 @@ import com.aumaid.bochihhott.Models.FoodItem;
 import com.aumaid.bochihhott.Models.MenuItem;
 import com.aumaid.bochihhott.Models.Partner;
 import com.aumaid.bochihhott.R;
+import com.aumaid.bochihhott.ReviewsAndRatings.Activities.ReviewsActivity;
 import com.aumaid.bochihhott.Utils.CarouselHelper;
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
@@ -73,6 +75,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
 
     private FoodItemAdapter foodItemAdapter;
     private FoodItemAdapter foodAdapter;
+    private FinalMenuAdapter menuAdapter;
 
     private View view;
 
@@ -99,6 +102,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
 
         setUpFragment();
         bindWidgets();
+        initButtonListeners();
        // fetchFeaturedFoodItems();
         fetchOffers();
       //  fetchMenu();
@@ -122,7 +126,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
                     for(DataSnapshot ing: childDataSnapshot.getChildren()){
 
-                        Log.d(TAG, "onDataChange: Showing Offers"+ing.toString());
+                        //Log.d(TAG, "onDataChange: Showing Offers"+ing.toString());
                         mOffers.add(ing.getValue(CarouselData.class));
 
                     }
@@ -139,8 +143,8 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
     }
 
     private void fetchMenu(){
-        //Log.d(TAG, "fetchMenu: Fetching Restaurant Menu");
-        Log.d(TAG, "fetchMenu: Total "+mOffers.size()+" offers added");
+        ////Log.d(TAG, "fetchMenu: Fetching Restaurant Menu");
+        //Log.d(TAG, "fetchMenu: Total "+mOffers.size()+" offers added");
         menu.clear();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("menus/"+partner.getRestaurant_id());
 
@@ -148,9 +152,11 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds: snapshot.getChildren()){
-                    //Log.d(TAG, "onDataChange: "+ds.toString());
+                    ////Log.d(TAG, "onDataChange: "+ds.toString());
                     MenuItem menuItem = ds.getValue(MenuItem.class);
+                    Log.d(TAG, "onDataChange: Menu Icon: "+ds.toString());
                     menu.add(menuItem);
+                  //  Log.d(TAG, "onDataChange: Menu Icon: "+menuItem.getCategory_icon());
 
                 }
                 fetchFeaturedFoodItems();
@@ -193,7 +199,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
     private void setUpFragment(){
         if(getArguments()!=null){
             partner = (Partner) getArguments().getSerializable("RESTAURANT");
-            //Log.d(TAG, "setUpFragment: Restaurant: "+partner.toString());
+            ////Log.d(TAG, "setUpFragment: Restaurant: "+partner.toString());
             calculate();
         }
         mFeaturedFoodItems = new ArrayList<>();
@@ -206,6 +212,17 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
         foodItemAdapter = new FoodItemAdapter(mFoodItems,getActivity(),this);
         mFoodItemsRv.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
         foodItemAdapter.notifyDataSetChanged();
+
+    }
+    private void initButtonListeners(){
+        mSeeReviews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ReviewsActivity.class);
+                intent.putExtra("RESTAURANT_ID",partner.getRestaurant_id());
+                startActivity(intent);
+            }
+        });
 
     }
     private void bindWidgets(){
@@ -249,8 +266,6 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
 
 
 
-
-
     }
     private void initOffersAdapter(){
         //Automatic Sliding Duration
@@ -269,7 +284,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
      * This method is used to populate the food items Recycler view
      * Note: in future it must show the items from the category user clicks on */
     private void setUpFoodItemsRView(String category, View view){
-        Log.d(TAG, "setUpFoodItemsRView: Category: "+category+" View :"+view);
+        //Log.d(TAG, "setUpFoodItemsRView: Category: "+category+" View :"+view);
         TextView mFoodCategoryHeadingText = view.findViewById(R.id.menuItemHeading);
         mFoodCategoryHeadingText.setText(category+"'s");
         // shimmerFrameLayout.startShimmer();
@@ -289,7 +304,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
     }
 
     private void loadRecyclerViewData(String category){
-        Log.d(TAG, "loadRecyclerViewData: Loading Data Starting shimmer");
+        //Log.d(TAG, "loadRecyclerViewData: Loading Data Starting shimmer");
 //Tweak this method so that is shows the food of the selected category
         //Firebase
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
@@ -307,7 +322,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
 
                 //Receiving Data
                 for (DataSnapshot ds : snapshot.child("categories").child(category).getChildren()) {
-                    // Log.d(TAG, "onDataChange: "+ds);
+                    // //Log.d(TAG, "onDataChange: "+ds);
 //                    FoodItemRV itemRV = new FoodItemRV();
 //                    Partner restaurant = new Partner();
                     FoodItem foodItem = ds.getValue(FoodItem.class);
@@ -315,7 +330,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
                     //Storing The key of the restaurant id into a variable
                     //  String restaurantId = foodItem.getRestaurant_id();
 
-                    // Log.d(TAG, "onDataChange: Food Restaurant Id: "+restaurantId);
+                    // //Log.d(TAG, "onDataChange: Food Restaurant Id: "+restaurantId);
 
                     //Getting the Restaurant with the restaurantId
 //                    for(DataSnapshot dataSnapshot: snapshot.child("restaurants").getChildren()){
@@ -340,7 +355,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
 
 
                 foodAdapter.notifyDataSetChanged();
-                Log.d(TAG, "onDataChange: Data Received Data hiding shimmer");
+                //Log.d(TAG, "onDataChange: Data Received Data hiding shimmer");
                 //TODO: Hide Shimmer Here
                 //hideShimmer();
 
@@ -372,10 +387,9 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
         CarouselHelper.slide(mFeaturedFoodItemsRv,featuredLinearLayoutManger,featuredFoodItemAdapter);
 
         RecyclerView mRestaurantMenuRv = view.findViewById(R.id.restaurantMenuRv);
-        FinalMenuAdapter FinalMenuAdapter
-                = new FinalMenuAdapter(getActivity(),menu,this);
+        menuAdapter = new FinalMenuAdapter(getActivity(),menu,this);
         mRestaurantMenuRv.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
-        mRestaurantMenuRv.setAdapter(FinalMenuAdapter);
+        mRestaurantMenuRv.setAdapter(menuAdapter);
 
         //Offers Carousel
       //  SliderView sliderView = view.findViewById(R.id.slider);
@@ -432,16 +446,17 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
         mSelectedCategoryFoodItem.clear();
         MenuItem selectedCategory = menu.get(position);
         selectedCategory.setSelected(true);
-//        Log.d(TAG, "onCategoryClicked: Category "+selectedCategory.getCategory_name()+" clicked");
-//        for(int i=0;i<mFoodItems.size();i++){
-//            FoodItem item = mFoodItems.get(i);
-//            if(item.getCategory_id().matches(selectedCategory.getCategory_name())){
-//                mSelectedCategoryFoodItem.add(item);
-//            }
-//        }
-//
-      //  setUpFoodItemsRView(selectedCategory.getCategory_name(),view);
+        //Log.d(TAG, "onCategoryClicked: Category "+selectedCategory.getCategory_name()+" clicked");
+        for(int i=0;i<mFoodItems.size();i++){
+            FoodItem item = mFoodItems.get(i);
+            if(item.getCategory_id().matches(selectedCategory.getCategory_name())){
+                mSelectedCategoryFoodItem.add(item);
+            }
+        }
 
+        setUpFoodItemsRView(selectedCategory.getCategory_name(),view);
+        menuAdapter.notifyDataSetChanged();
         foodItemAdapter.notifyDataSetChanged();
+
     }
 }

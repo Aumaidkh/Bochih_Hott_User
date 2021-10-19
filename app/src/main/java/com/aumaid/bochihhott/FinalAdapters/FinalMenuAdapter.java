@@ -62,9 +62,9 @@ public class FinalMenuAdapter extends RecyclerView.Adapter<FinalMenuAdapter.Fina
        // holder.mCategoryIcon.setImageResource(category.getCategoryIcon());
         holder.mCategoryName.setText(category.getCategory_name());
         //Setting Category Icon
-//        Glide.with(mContext)
-//                .load(category.getCategory_icon())
-//                .into(holder.mCategoryIcon);
+        Glide.with(mContext)
+                .load(category.getCategory_icon())
+                .into(holder.mCategoryIcon);
         if(isSelected){
             final Animation myAnim = AnimationUtils.loadAnimation(mContext, R.anim.bounce);
             // Use bounce interpolator with amplitude 0.2 and frequency 20

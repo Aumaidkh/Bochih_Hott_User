@@ -37,6 +37,11 @@ public class StringManipulation {
         return time;
     }
 
+    public static String extractDate(String timestamp){
+        String date = timestamp.substring(0,11);
+        return date;
+    }
+
     public static ArrayList<String> getRestaurantIds(ArrayList<FoodItem> foodItems){
 
         ArrayList<String> resIds = new ArrayList<>();

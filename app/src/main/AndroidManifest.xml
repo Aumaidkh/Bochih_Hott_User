@@ -14,7 +14,8 @@
         android:roundIcon="@drawable/ic_launcher_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.BochihHott">
-        <activity android:name=".Cart.LoginDemo"></activity>
+        <activity android:name=".ReviewsAndRatings.Activities.ReviewsActivity"></activity>
+        <activity android:name=".Cart.LoginDemo" />
         <activity android:name=".Addresses.AddressesParentActivity" />
         <activity android:name=".Options.AddressesActivity" />
         <activity android:name=".Orders.OrdersActivity" />

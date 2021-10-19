@@ -25,10 +25,12 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "phone_number=" + phone_number +
+                "profile_photo='" + profile_photo + '\'' +
+                ", phone_number='" + phone_number + '\'' +
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", description='" + description + '\'' +
                 ", isPartner='" + isPartner + '\'' +
                 '}';
     }
