@@ -62,7 +62,6 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
     /**
      * Declaring Widgets*/
     private ImageView mCoverImage;
-    private ImageView mProfilePic;
     private ImageView mBackButton;
 
     private TextView mName;
@@ -89,7 +88,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
     private Partner partner;
     private String distance;
     private String time;
-    private int reviewsNum;
+    private long reviewsNum;
 
     @Nullable
     @Override
@@ -227,7 +226,6 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
     }
     private void bindWidgets(){
         mCoverImage = view.findViewById(R.id.restaurantCoverPhoto);
-        mProfilePic = view.findViewById(R.id.restaurantPhoto);
         mBackButton = view.findViewById(R.id.backArrow);
         mName = view.findViewById(R.id.restaurantNameTv);
         mAddress = view.findViewById(R.id.restaurantAddressTv);
@@ -246,23 +244,12 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
                 .placeholder(R.drawable.burger1)
                 .into(mCoverImage);
 
-        Glide.with(getActivity())
-                .load(partner.getPhoto())
-                .placeholder(R.drawable.burger1)
-                .into(mProfilePic);
 
         mName.setText(partner.getName());
 
         mAddress.setText(partner.getAddress()+","+partner.getCity());
 
         mRatings.setText(partner.getRatings()+"");
-
-        if(reviewsNum<31){
-           mReviewsCount.setText("30+");
-        }else{
-            mReviewsCount.setText(reviewsNum);
-        }
-
 
 
 
@@ -424,8 +411,36 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
         //Should be coming from Server with the image as well
 
     }
-    private void calculate(){
 
+    /**
+     * This method is used to make calculation of reviews and then sets the text views for
+     * number of reviews accordingly*/
+    private void calculate(){
+        //Counting Number of Reviews for this restaurant
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
+        myRef.child("reviews");
+        Query query = myRef.orderByChild("res_id").equalTo(partner.getRestaurant_id());
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    reviewsNum = snapshot.getChildrenCount();
+                    Log.d(TAG, "onDataChange: Total Number of Reviews: "+reviewsNum);
+
+                    if(reviewsNum>31){
+                        mReviewsCount.setText("30+");
+                    }else{
+                        mReviewsCount.setText(reviewsNum+"");
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override
