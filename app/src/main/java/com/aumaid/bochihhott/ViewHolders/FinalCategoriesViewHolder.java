@@ -8,8 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aumaid.bochihhott.Interfaces.CardBackgroundColorChanger;
-import com.aumaid.bochihhott.Interfaces.CategoriesOptionListener;
+import com.aumaid.bochihhott.Interfaces.RecyclerViewItemClickListener;
 import com.aumaid.bochihhott.R;
 
 public class FinalCategoriesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -18,10 +17,10 @@ public class FinalCategoriesViewHolder extends RecyclerView.ViewHolder implement
     public TextView mCategoryName;
     public CardView mButtonBackground;
     private int selected_position = -1;
-    private CategoriesOptionListener categoriesOptionListener;
+    private RecyclerViewItemClickListener recyclerViewItemClickListener;
 
 
-    public FinalCategoriesViewHolder(@NonNull View itemView, CategoriesOptionListener categoriesOptionListener) {
+    public FinalCategoriesViewHolder(@NonNull View itemView, RecyclerViewItemClickListener recyclerViewItemClickListener) {
         super(itemView);
 
         /**
@@ -29,7 +28,7 @@ public class FinalCategoriesViewHolder extends RecyclerView.ViewHolder implement
         mCategoryIcon = itemView.findViewById(R.id.categoryIcon);
         mCategoryName = itemView.findViewById(R.id.categoryName);
         mButtonBackground = itemView.findViewById(R.id.categoryBgCard);
-        this.categoriesOptionListener = categoriesOptionListener;
+        this.recyclerViewItemClickListener = recyclerViewItemClickListener;
 
 
         itemView.setOnClickListener(this);
@@ -39,7 +38,7 @@ public class FinalCategoriesViewHolder extends RecyclerView.ViewHolder implement
     public void onClick(View v) {
 
       //  selected_position = getAdapterPosition();
-        categoriesOptionListener.onCategoryClicked(getAdapterPosition());
+        recyclerViewItemClickListener.onViewClicked(getAdapterPosition());
 
 
     }

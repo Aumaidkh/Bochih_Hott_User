@@ -8,6 +8,7 @@ package com.aumaid.bochihhott.ReviewsAndRatings.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,12 +49,15 @@ public class ReviewsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Setting Status Bar
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.white));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reviews);
-
+        initButtonListeners();
         fetchUser();
         fetchReviews();
-        // initButtonListeners();
+
 
 
     }
@@ -147,48 +151,15 @@ public class ReviewsActivity extends AppCompatActivity {
         mReviewsRecycler.setAdapter(adapter);
     }
 
-    private void initButtonListeners() {
-        EditText mReview = findViewById(R.id.reviewInput);
-        mReview.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View view, int keyCode, KeyEvent keyevent) {
-                //If the keyevent is a key-down event on the "enter" button
-                if ((keyevent.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    //...
-                    // Perform your action on key press here
-                    // ...
-                    String review = mReview.getText().toString().trim();
-                    if (review != null) {
-                        ReviewModel reviewModel = new ReviewModel(
-                                user.getProfile_photo(),
-                                review,
-                                TimeHelper.getTimeStamp(),
-                                user.getUsername(),
-                                getIntent().getStringExtra("RESTAURANT_ID")
-                        );
-
-                        //Saving Review To the Database
-                        ReviewDao reviewDao = new ReviewDao(getApplicationContext());
-                        reviewDao.saveNewReview(reviewModel);
-
-                        //Clearing the Edit Text field
-                        mReview.setText("");
-                        mReview.clearFocus();
-
-                    }
-                    return true;
-                }
-                return false;
+    private void initButtonListeners(){
+        CardView mBackButton = findViewById(R.id.back_btn);
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
-//        mReview.setOnKeyListener((v, actionId, event) -> {
-//            if (actionId == EditorInfo.IME_ACTION_DONE) {
-//                //Create a new Review
-//
-//            }
-//            return false;
-//        });
     }
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         EditText mReview = findViewById(R.id.reviewInput);
@@ -196,30 +167,30 @@ public class ReviewsActivity extends AppCompatActivity {
             Log.d(TAG, "onKeyDown: Enter Pressed");
             String review = mReview.getText().toString().trim();
             if (review != null) {
-                if(review.length()<100){
-                ReviewModel reviewModel = new ReviewModel(
-                        user.getProfile_photo(),
-                        getIntent().getStringExtra("RESTAURANT_ID"),
-                        TimeHelper.getTimeStamp(),
-                        review,
-                        user.getUsername()
-                );
+                if (review.length() < 100) {
+                    ReviewModel reviewModel = new ReviewModel(
+                            user.getProfile_photo(),
+                            getIntent().getStringExtra("RESTAURANT_ID"),
+                            TimeHelper.getTimeStamp(),
+                            review,
+                            user.getUsername()
+                    );
 
-                //Saving Review To the Database
-                ReviewDao reviewDao = new ReviewDao(getApplicationContext());
-                reviewDao.saveNewReview(reviewModel);
+                    //Saving Review To the Database
+                    ReviewDao reviewDao = new ReviewDao(getApplicationContext());
+                    reviewDao.saveNewReview(reviewModel);
 
-                //Clearing the Edit Text field
-                mReview.setText("");
-                //Clearing Focus from Edit text
-                mReview.clearFocus();
-                //Hiding Keyboard
-                TextFieldHelperClass.hideKeyboard(ReviewsActivity.this);
+                    //Clearing the Edit Text field
+                    mReview.setText("");
+                    //Clearing Focus from Edit text
+                    mReview.clearFocus();
+                    //Hiding Keyboard
+                    TextFieldHelperClass.hideKeyboard(ReviewsActivity.this);
 
-            }
-            return true;}
-            else{
-                Toast.makeText(getApplicationContext(),"Review body can't be greater than 100 characters.",Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            } else {
+                Toast.makeText(getApplicationContext(), "Review body can't be greater than 100 characters.", Toast.LENGTH_SHORT).show();
                 return true;
             }
         }

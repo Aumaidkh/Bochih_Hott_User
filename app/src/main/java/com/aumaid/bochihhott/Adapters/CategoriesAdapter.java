@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aumaid.bochihhott.Interfaces.CategoriesOptionListener;
+import com.aumaid.bochihhott.Interfaces.RecyclerViewItemClickListener;
 import com.aumaid.bochihhott.Models.Category;
 import com.aumaid.bochihhott.R;
 import com.aumaid.bochihhott.ViewHolders.CategoriesViewHolder;
@@ -17,18 +17,18 @@ import java.util.ArrayList;
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesViewHolder> {
 
     private ArrayList<Category> mCategories;
-    private CategoriesOptionListener categoriesOptionListener;
+    private RecyclerViewItemClickListener recyclerViewItemClickListener;
 
-    public CategoriesAdapter(ArrayList<Category> mCategories, CategoriesOptionListener categoriesOptionListener) {
+    public CategoriesAdapter(ArrayList<Category> mCategories, RecyclerViewItemClickListener recyclerViewItemClickListener) {
         this.mCategories = mCategories;
-        this.categoriesOptionListener = categoriesOptionListener;
+        this.recyclerViewItemClickListener = recyclerViewItemClickListener;
     }
 
     @NonNull
     @Override
     public CategoriesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.simple_category_item_layout,parent,false);
-        CategoriesViewHolder viewHolder = new CategoriesViewHolder(view, categoriesOptionListener);
+        CategoriesViewHolder viewHolder = new CategoriesViewHolder(view, recyclerViewItemClickListener);
         return viewHolder;
     }
 

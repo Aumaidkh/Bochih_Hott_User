@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,7 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewHo
 
     private ArrayList<ReviewModel> reviews;
     private Context mContext;
+    private ReviewModel review;
 
     public ReviewsAdapter(ArrayList<ReviewModel> reviews, Context mContext) {
         this.reviews = reviews;
@@ -48,7 +50,7 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewHo
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ReviewsAdapter.ReviewHolder holder, int position) {
-        ReviewModel review = reviews.get(position);
+        review = reviews.get(position);
         try{
             holder.review.setText(review.getBody());
             holder.timestamp.setText(StringManipulation.extractDate(review.getTimestamp()));
@@ -56,9 +58,14 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewHo
             Glide.with(mContext)
                     .load(review.getProfile_pic())
                     .into(holder.profilePic);
+            setUpOptionsSpinner();
         }catch (NullPointerException e){
             Log.d(TAG, "onBindViewHolder: "+e.getMessage());
         }
+    }
+
+    private void setUpOptionsSpinner(){
+       //Set up Spinner for options here
     }
 
     @Override
@@ -70,6 +77,7 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewHo
     public class ReviewHolder extends RecyclerView.ViewHolder {
 
         private ImageView profilePic;
+        private Spinner options;
         private TextView username;
         private TextView timestamp;
         private TextView review;
@@ -81,6 +89,7 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ReviewHo
             username = itemView.findViewById(R.id.reviewerUserName);
             timestamp = itemView.findViewById(R.id.reviewTimestamp);
             review = itemView.findViewById(R.id.review);
+            options = itemView.findViewById(R.id.options);
         }
     }
 }

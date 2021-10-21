@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,8 +15,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -26,7 +23,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aumaid.bochihhott.Cart.LoginDemo;
 import com.aumaid.bochihhott.FinalAdapters.FinalFeaturedRestaurantsAdapter;
 import com.aumaid.bochihhott.FinalAdapters.FinalNearByRestaurantsAdapter;
 import com.aumaid.bochihhott.FinalAdapters.FoodItemAdapter;
@@ -35,7 +31,7 @@ import com.aumaid.bochihhott.Adapters.SpecialOffersItemsAdapter;
 import com.aumaid.bochihhott.Adapters.UniversalImageLoader;
 import com.aumaid.bochihhott.DAO.User;
 import com.aumaid.bochihhott.FinalAdapters.FinalCategoriesAdapter;
-import com.aumaid.bochihhott.Interfaces.CategoriesOptionListener;
+import com.aumaid.bochihhott.Interfaces.RecyclerViewItemClickListener;
 import com.aumaid.bochihhott.Interfaces.FoodItemListener;
 import com.aumaid.bochihhott.Interfaces.PopularFoodsListener;
 import com.aumaid.bochihhott.Interfaces.RestaurantListener;
@@ -43,9 +39,7 @@ import com.aumaid.bochihhott.Models.Category;
 import com.aumaid.bochihhott.Models.FoodItem;
 import com.aumaid.bochihhott.Models.Partner;
 import com.aumaid.bochihhott.Models.SpecialOfferedItem;
-import com.aumaid.bochihhott.Profile.ActivityProfile;
 import com.aumaid.bochihhott.Profile.EditProfileActivity;
-import com.aumaid.bochihhott.Profile.ProfileActivity;
 import com.aumaid.bochihhott.R;
 import com.aumaid.bochihhott.Restaurant.RestaurantFragment;
 import com.bumptech.glide.Glide;
@@ -57,7 +51,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -65,9 +58,8 @@ import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class FinalHomeFragment extends Fragment  implements NavigationView.OnNavigationItemSelectedListener ,CategoriesOptionListener, RestaurantListener, PopularFoodsListener, FoodItemListener, BottomNavigationView.OnNavigationItemSelectedListener {
+public class FinalHomeFragment extends Fragment  implements NavigationView.OnNavigationItemSelectedListener , RecyclerViewItemClickListener, RestaurantListener, PopularFoodsListener, FoodItemListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "FinalHomeFragment";
     private static final float END_SCALE = 0.8f;
@@ -531,7 +523,7 @@ public class FinalHomeFragment extends Fragment  implements NavigationView.OnNav
     /**
      * This method assigns functionality to the categories recycler view in home screen*/
     @Override
-    public void onCategoryClicked(int position) {
+    public void onViewClicked(int position) {
        // shimmerFrameLayout.startShimmer();
         type = "Food Items";
         Category selectedCategory = mCategories.get(position);
@@ -723,7 +715,7 @@ public class FinalHomeFragment extends Fragment  implements NavigationView.OnNav
         RestaurantFragment restaurantFragment = new RestaurantFragment();
         restaurantFragment.setArguments(bundle);
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container,restaurantFragment);
+        transaction.replace(R.id.container,restaurantFragment,"Restaurant_Fragment");
         transaction.commit();
     }
 }

@@ -248,44 +248,20 @@
                 android:id="@+id/restaurantFeaturedItemsRv"/>
 
 
+            <!--Showing Menu-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <!--Menu Heading-->
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/sofiia_medium"
-                android:text="Menu"
-                android:layout_marginStart="20dp"
-                android:textColor="@color/dark"
-                android:textSize="20sp" />
+                <include layout="@layout/expandable_floating_action_button_layout"/>
 
-            <!--Restaurant menu Recycler View-->
+            </RelativeLayout>
+
+            <!--Food Items Recycler View-->
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/restaurantMenuRv"/>
-
-            <!--Relevant menu item heading-->
-            <!--Menu Heading-->
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/menuItemHeading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/sofiia_medium"
-                android:text="Menu"
-                android:layout_marginStart="20dp"
-                android:textColor="@color/dark"
-                android:textSize="20sp" />
-
-            <!--Restaurant Relevant Recycler View-->
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/foodItemsRv"/>
+                android:id="@+id/foodItemsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
 
         </LinearLayout>

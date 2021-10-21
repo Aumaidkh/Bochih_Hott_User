@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021.
+  ~ All Rights Reserved.
+  ~ BochihHott and BochihHott Partner are properties of Murtaza Khursheed.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Restaurant.ResultsActivity">
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <include layout="@layout/toolbar_product_description" />
+
+    </RelativeLayout>
+
+    <!--Category Image: Note Image used here should be a png-->
+    <ImageView
+        android:id="@+id/categoryImage"
+        android:layout_width="330dp"
+        android:layout_height="330dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-69dp"
+        android:layout_marginEnd="-49dp"
+        android:src="@drawable/pizza" />
+
+    <!--Menu Category name-->
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:id="@+id/menuItemName"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/sofiia_regular"
+        android:text="Pizza"
+        android:textColor="@color/dark"
+        android:textSize="45sp" />
+    <!--Number of Items in category-->
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/numberOfMenuItems"
+        android:text="11 items in Pizzas"
+        android:layout_marginStart="15dp"
+        android:layout_below="@id/menuItemName"
+        android:fontFamily="@font/sofiia_medium"
+        android:textSize="14sp"
+        android:textColor="@color/gray"
+        android:layout_gravity="center"
+        />
+
+    <!--Showing pizzas text-->
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/showingAllText"
+        android:text="Showing all pizzas"
+        android:layout_marginStart="15dp"
+        android:layout_below="@id/categoryImage"
+        android:fontFamily="@font/sofiia_medium"
+        android:textSize="14sp"
+        android:textColor="@color/dark80"
+        android:layout_gravity="center"
+        />
+
+    <!--Food items RecyclerView-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/showingAllText"
+        android:id="@+id/foodItemsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_centerInParent="true"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:visibility="gone"
+        android:background="@drawable/progress_bar_background"/>
+
+</RelativeLayout>

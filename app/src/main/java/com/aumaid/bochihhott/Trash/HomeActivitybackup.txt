@@ -23,7 +23,7 @@ import com.aumaid.bochihhott.Adapters.SpecialOffersItemsAdapter;
 import com.aumaid.bochihhott.Adapters.UniversalImageLoader;
 import com.aumaid.bochihhott.Home.HomeFragment;
 import com.aumaid.bochihhott.Home.ProductDescriptionFragment;
-import com.aumaid.bochihhott.Interfaces.CategoriesOptionListener;
+import com.aumaid.bochihhott.Interfaces.RecyclerViewItemClickListener;
 import com.aumaid.bochihhott.Interfaces.FoodItemListener;
 import com.aumaid.bochihhott.Models.Category;
 import com.aumaid.bochihhott.Models.FoodItem;

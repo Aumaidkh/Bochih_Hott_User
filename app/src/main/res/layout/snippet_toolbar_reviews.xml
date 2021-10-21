@@ -1,18 +1,30 @@
-<merge
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:layout_width="match_parent"
-        android:padding="10dp">
+        >
 
-        <ImageView
+        <androidx.cardview.widget.CardView
             android:id="@+id/back_btn"
-            android:layout_alignParentStart="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_black_back_arrow" />
+            android:layout_centerVertical="true"
+            android:layout_width="45dp"
+            android:layout_height="50dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            app:cardUseCompatPadding="true"
+            >
 
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                app:tint="@color/dark50"
+                android:src="@drawable/ic_black_back_arrow"
+                />
+
+        </androidx.cardview.widget.CardView>
         <TextView
             android:id="@+id/productNameTv"
             android:layout_width="wrap_content"

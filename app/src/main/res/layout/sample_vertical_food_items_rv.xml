@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="0.6dp"
+    android:layout_width="match_parent"
+    android:layout_height="207dp"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--Food image and price-->
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/foodImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pizza" />
+
+                <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="15dp"
+                    android:layout_width="70dp"
+                    android:layout_height="29dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/priceTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/sofia_regular"
+                        android:text="Rs. 100"
+                        android:textAlignment="center"
+                        android:textColor="@color/dark"
+                        android:textSize="17sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/likeBtn"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0.2dp"
+                    app:cardBackgroundColor="@color/orange"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp">
+
+                    <ImageView
+                        android:layout_margin="10dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center"
+                        app:tint="@color/white"
+                        android:src="@drawable/ic_filled_heart"
+                        />
+
+                </androidx.cardview.widget.CardView>
+
+
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!--Food Rating-->
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="15dp"
+            app:cardUseCompatPadding="true"
+            android:layout_width="70dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="-21dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/ratingTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/sofia_regular"
+                    android:text="4.5"
+                    android:textColor="@color/dark" />
+
+                <ImageView
+                    app:tint="@color/yellow"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="4dp"
+                    android:layout_toEndOf="@id/ratingTv"
+                    android:src="@drawable/ic_star" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <!--Food Name-->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/itemNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13sp"
+            android:layout_marginTop="-3dp"
+            android:fontFamily="@font/sofiia_medium"
+            android:text="Pizza"
+            android:textColor="@color/dark"
+            android:textSize="17sp" />
+
+        <!--Restaurant Name-->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/restaurantAddressTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/sofiia_regular"
+            android:text="Hatrick, K.P Road"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

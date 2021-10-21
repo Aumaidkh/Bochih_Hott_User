@@ -2,7 +2,6 @@ package com.aumaid.bochihhott.FinalAdapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +13,9 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aumaid.bochihhott.Animations.BounceInterpolator;
-import com.aumaid.bochihhott.Interfaces.CategoriesOptionListener;
+import com.aumaid.bochihhott.Interfaces.RecyclerViewItemClickListener;
 import com.aumaid.bochihhott.Models.Category;
 import com.aumaid.bochihhott.R;
-import com.aumaid.bochihhott.ViewHolders.CategoriesViewHolder;
 import com.aumaid.bochihhott.ViewHolders.FinalCategoriesViewHolder;
 
 import java.util.ArrayList;
@@ -27,21 +25,21 @@ public class FinalCategoriesAdapter extends RecyclerView.Adapter<FinalCategories
     private static final String TAG = "FinalCategoriesAdapter";
 
     private ArrayList<Category> mCategories;
-    private CategoriesOptionListener categoriesOptionListener;
+    private RecyclerViewItemClickListener recyclerViewItemClickListener;
     private Context mContext;
 
 
-    public FinalCategoriesAdapter(Context mContext, ArrayList<Category> mCategories, CategoriesOptionListener categoriesOptionListener) {
+    public FinalCategoriesAdapter(Context mContext, ArrayList<Category> mCategories, RecyclerViewItemClickListener recyclerViewItemClickListener) {
         this.mContext = mContext;
         this.mCategories = mCategories;
-        this.categoriesOptionListener = categoriesOptionListener;
+        this.recyclerViewItemClickListener = recyclerViewItemClickListener;
     }
 
     @NonNull
     @Override
     public FinalCategoriesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sample_categories_recyclerview,parent,false);
-        FinalCategoriesViewHolder viewHolder = new FinalCategoriesViewHolder(view, categoriesOptionListener);
+        FinalCategoriesViewHolder viewHolder = new FinalCategoriesViewHolder(view, recyclerViewItemClickListener);
         return viewHolder;
     }
 

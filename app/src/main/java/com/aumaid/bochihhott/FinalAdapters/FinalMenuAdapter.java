@@ -2,7 +2,6 @@ package com.aumaid.bochihhott.FinalAdapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +16,9 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aumaid.bochihhott.Animations.BounceInterpolator;
-import com.aumaid.bochihhott.Interfaces.CategoriesOptionListener;
-import com.aumaid.bochihhott.Models.Category;
+import com.aumaid.bochihhott.Interfaces.RecyclerViewItemClickListener;
 import com.aumaid.bochihhott.Models.MenuItem;
 import com.aumaid.bochihhott.R;
-import com.aumaid.bochihhott.ViewHolders.FinalCategoriesViewHolder;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -31,21 +28,21 @@ public class FinalMenuAdapter extends RecyclerView.Adapter<FinalMenuAdapter.Fina
     private static final String TAG = "FinalMenuAdapter";
 
     private ArrayList<MenuItem> mCategories;
-    private CategoriesOptionListener categoriesOptionListener;
+    private RecyclerViewItemClickListener recyclerViewItemClickListener;
     private Context mContext;
 
 
-    public FinalMenuAdapter(Context mContext, ArrayList<MenuItem> mCategories, CategoriesOptionListener categoriesOptionListener) {
+    public FinalMenuAdapter(Context mContext, ArrayList<MenuItem> mCategories, RecyclerViewItemClickListener recyclerViewItemClickListener) {
         this.mContext = mContext;
         this.mCategories = mCategories;
-        this.categoriesOptionListener = categoriesOptionListener;
+        this.recyclerViewItemClickListener = recyclerViewItemClickListener;
     }
 
     @NonNull
     @Override
     public FinalMenuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sample_categories_recyclerview,parent,false);
-        FinalMenuViewHolder viewHolder = new FinalMenuViewHolder(view, categoriesOptionListener);
+        FinalMenuViewHolder viewHolder = new FinalMenuViewHolder(view, recyclerViewItemClickListener);
         return viewHolder;
     }
 
@@ -106,10 +103,10 @@ public class FinalMenuAdapter extends RecyclerView.Adapter<FinalMenuAdapter.Fina
         public TextView mCategoryName;
         public CardView mButtonBackground;
         private int selected_position = -1;
-        private CategoriesOptionListener categoriesOptionListener;
+        private RecyclerViewItemClickListener recyclerViewItemClickListener;
 
 
-        public FinalMenuViewHolder(@NonNull View itemView, CategoriesOptionListener categoriesOptionListener) {
+        public FinalMenuViewHolder(@NonNull View itemView, RecyclerViewItemClickListener recyclerViewItemClickListener) {
             super(itemView);
 
             /**
@@ -117,7 +114,7 @@ public class FinalMenuAdapter extends RecyclerView.Adapter<FinalMenuAdapter.Fina
             mCategoryIcon = itemView.findViewById(R.id.categoryIcon);
             mCategoryName = itemView.findViewById(R.id.categoryName);
             mButtonBackground = itemView.findViewById(R.id.categoryBgCard);
-            this.categoriesOptionListener = categoriesOptionListener;
+            this.recyclerViewItemClickListener = recyclerViewItemClickListener;
 
 
             itemView.setOnClickListener(this);
@@ -127,7 +124,7 @@ public class FinalMenuAdapter extends RecyclerView.Adapter<FinalMenuAdapter.Fina
         public void onClick(View v) {
 
             //  selected_position = getAdapterPosition();
-            categoriesOptionListener.onCategoryClicked(getAdapterPosition());
+            recyclerViewItemClickListener.onViewClicked(getAdapterPosition());
 
 
         }

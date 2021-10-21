@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021.
+  ~ All Rights Reserved.
+  ~ BochihHott and BochihHott Partner are properties of Murtaza Khursheed.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:paddingBottom="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <!--Item Image-->
+    <androidx.cardview.widget.CardView
+        app:cardBackgroundColor="@color/orange"
+        android:id="@+id/menuItemCard"
+        app:cardCornerRadius="35dp"
+        android:layout_margin="3dp"
+        app:cardElevation="5dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/orange"
+            android:id="@+id/menuItemImage"
+            android:layout_gravity="center"
+            android:layout_width="53dp"
+            android:layout_height="53dp"
+            android:src="@drawable/burger1"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <!--Menu Item Name-->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/menuItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/menuItemCard"
+        android:text="Pizza's"
+        android:fontFamily="@font/sofiia_regular"
+        android:textColor="@color/dark"
+        android:textSize="18sp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="25dp"/>
+
+
+
+
+</RelativeLayout>

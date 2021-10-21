@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021.
+  ~ All Rights Reserved.
+  ~ BochihHott and BochihHott Partner are properties of Murtaza Khursheed.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="15dp"
+    android:layout_height="match_parent">
+
+    <!--Menu Heading-->
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_marginStart="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Menu"
+        android:id="@+id/menuHeading"
+        android:textSize="20sp"
+        android:textColor="@color/orange" />
+
+
+    <!--Menu Recycler View-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/menuHeading"
+        android:layout_marginStart="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuRecyclerView"/>
+
+</RelativeLayout>

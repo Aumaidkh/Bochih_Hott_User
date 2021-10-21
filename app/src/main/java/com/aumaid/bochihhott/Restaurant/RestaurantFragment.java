@@ -19,19 +19,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aumaid.bochihhott.FinalAdapters.FeaturedFoodItemAdapter;
 import com.aumaid.bochihhott.FinalAdapters.FinalMenuAdapter;
 import com.aumaid.bochihhott.FinalAdapters.FoodItemAdapter;
 import com.aumaid.bochihhott.FinalAdapters.OffersAdapter;
-import com.aumaid.bochihhott.FinalAdapters.SliderAdapter;
-import com.aumaid.bochihhott.Interfaces.CategoriesOptionListener;
+import com.aumaid.bochihhott.Interfaces.RecyclerViewItemClickListener;
 import com.aumaid.bochihhott.Interfaces.FoodItemListener;
 import com.aumaid.bochihhott.Interfaces.RecyclerViewListener;
 import com.aumaid.bochihhott.Models.CarouselData;
-import com.aumaid.bochihhott.Models.Category;
 import com.aumaid.bochihhott.Models.FoodItem;
 import com.aumaid.bochihhott.Models.MenuItem;
 import com.aumaid.bochihhott.Models.Partner;
@@ -39,21 +36,17 @@ import com.aumaid.bochihhott.R;
 import com.aumaid.bochihhott.ReviewsAndRatings.Activities.ReviewsActivity;
 import com.aumaid.bochihhott.Utils.CarouselHelper;
 import com.bumptech.glide.Glide;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.smarteist.autoimageslider.SliderAnimations;
-import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
-public class RestaurantFragment extends Fragment implements FoodItemListener, RecyclerViewListener, CategoriesOptionListener {
+public class RestaurantFragment extends Fragment implements FoodItemListener, RecyclerViewListener, RecyclerViewItemClickListener {
 
 
 
@@ -89,6 +82,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
     private String distance;
     private String time;
     private long reviewsNum;
+    private String category;
 
     @Nullable
     @Override
@@ -98,6 +92,11 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
         getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.background_status_bar_filter));
         view = inflater.inflate(R.layout.fragment_restaurant_profile,container,false);
+        category=getArguments().getString("CATEGORY");
+        if(category!=null){
+            Log.d(TAG, "onCreateView: Category: "+category);
+            setUpFoodItemsRView(category,view);
+        }
 
         setUpFragment();
         bindWidgets();
@@ -207,10 +206,6 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
         mSelectedCategoryFoodItem = new ArrayList<>();
         mOffers = new ArrayList<>();
 
-        RecyclerView mFoodItemsRv = view.findViewById(R.id.restaurantMenuRv);
-        foodItemAdapter = new FoodItemAdapter(mFoodItems,getActivity(),this);
-        mFoodItemsRv.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
-        foodItemAdapter.notifyDataSetChanged();
 
     }
     private void initButtonListeners(){
@@ -220,6 +215,19 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
                 Intent intent = new Intent(getActivity(), ReviewsActivity.class);
                 intent.putExtra("RESTAURANT_ID",partner.getRestaurant_id());
                 startActivity(intent);
+            }
+        });
+
+        ExtendedFloatingActionButton mMenuBtn = view.findViewById(R.id.menu_button);
+        mMenuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("RESTAURANT_ID",partner.getRestaurant_id());
+                BottomMenuFragment fragment = new BottomMenuFragment();
+                fragment.setArguments(bundle);
+                fragment.show(getActivity().getSupportFragmentManager(),"Menu Sheet");
+                //
             }
         });
 
@@ -272,10 +280,10 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
      * Note: in future it must show the items from the category user clicks on */
     private void setUpFoodItemsRView(String category, View view){
         //Log.d(TAG, "setUpFoodItemsRView: Category: "+category+" View :"+view);
-        TextView mFoodCategoryHeadingText = view.findViewById(R.id.menuItemHeading);
-        mFoodCategoryHeadingText.setText(category+"'s");
+       // TextView mFoodCategoryHeadingText = view.findViewById(R.id.menuItemHeading);
+      //  mFoodCategoryHeadingText.setText(category+"'s");
         // shimmerFrameLayout.startShimmer();
-        RecyclerView mFoodItemsRecycler = view.findViewById(R.id.foodItemsRv);
+        RecyclerView mFoodItemsRecycler = view.findViewById(R.id.foodItemsRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
         mFoodItemsRecycler.setHasFixedSize(true);
         mFoodItemsRecycler.setLayoutManager(linearLayoutManager);
@@ -291,6 +299,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
     }
 
     private void loadRecyclerViewData(String category){
+        Log.d(TAG, "loadRecyclerViewData: Filling Food items list from database...");
         //Log.d(TAG, "loadRecyclerViewData: Loading Data Starting shimmer");
 //Tweak this method so that is shows the food of the selected category
         //Firebase
@@ -373,10 +382,10 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
         //Automatic Sliding Effect
         CarouselHelper.slide(mFeaturedFoodItemsRv,featuredLinearLayoutManger,featuredFoodItemAdapter);
 
-        RecyclerView mRestaurantMenuRv = view.findViewById(R.id.restaurantMenuRv);
+       /* RecyclerView mRestaurantMenuRv = view.findViewById(R.id.restaurantMenuRv);
         menuAdapter = new FinalMenuAdapter(getActivity(),menu,this);
         mRestaurantMenuRv.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
-        mRestaurantMenuRv.setAdapter(menuAdapter);
+        mRestaurantMenuRv.setAdapter(menuAdapter);*/
 
         //Offers Carousel
       //  SliderView sliderView = view.findViewById(R.id.slider);
@@ -415,25 +424,26 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
     /**
      * This method is used to make calculation of reviews and then sets the text views for
      * number of reviews accordingly*/
-    private void calculate(){
-        //Counting Number of Reviews for this restaurant
-        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
-        myRef.child("reviews");
-        Query query = myRef.orderByChild("res_id").equalTo(partner.getRestaurant_id());
+   private void calculate() {
+        //Making Database Connection
+        String restaurant_id = partner.getRestaurant_id();
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("reviews");
 
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        Query query = myRef.orderByChild("res_id").equalTo(restaurant_id);
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
+                if (snapshot.exists()) {
                     reviewsNum = snapshot.getChildrenCount();
-                    Log.d(TAG, "onDataChange: Total Number of Reviews: "+reviewsNum);
-
+                    Log.d(TAG, "onDataChange: Found: "+reviewsNum+" reviews");
                     if(reviewsNum>31){
                         mReviewsCount.setText("30+");
                     }else{
                         mReviewsCount.setText(reviewsNum+"");
                     }
                 }
+
+
             }
 
             @Override
@@ -441,6 +451,27 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
 
             }
         });
+
+
+      /*  myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for(DataSnapshot ds:snapshot.getChildren()){
+                    //  Log.d(TAG, "onDataChange: Reviews "+ds.toString());
+                    ReviewModel review = ds.getValue(ReviewModel.class);
+                  //  Log.d(TAG, "onDataChange: DataSnapshot : "+ds.toString());
+                 //   Log.d(TAG, "onDataChange: Review : "+review.toString());
+                    reviews.add(review);
+                }
+                Log.d(TAG, "onDataChange: Added All Reviews");
+                showReviews();
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });*/
     }
 
     @Override
@@ -456,7 +487,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
     }
 
     @Override
-    public void onCategoryClicked(int position) {
+    public void onViewClicked(int position) {
 
         mSelectedCategoryFoodItem.clear();
         MenuItem selectedCategory = menu.get(position);
@@ -469,7 +500,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
             }
         }
 
-        setUpFoodItemsRView(selectedCategory.getCategory_name(),view);
+      //  setUpFoodItemsRView(selectedCategory.getCategory_name(),view);
         menuAdapter.notifyDataSetChanged();
         foodItemAdapter.notifyDataSetChanged();
 

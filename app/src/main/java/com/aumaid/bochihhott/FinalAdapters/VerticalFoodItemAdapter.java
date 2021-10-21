@@ -16,11 +16,12 @@ import com.aumaid.bochihhott.Interfaces.RecyclerViewListener;
 import com.aumaid.bochihhott.Models.FoodItem;
 import com.aumaid.bochihhott.R;
 import com.aumaid.bochihhott.ViewHolders.FoodItemViewHolder;
+import com.aumaid.bochihhott.ViewHolders.VerticalFoodItemViewHolder;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class FeaturedFoodItemAdapter extends RecyclerView.Adapter<FoodItemViewHolder> {
+public class VerticalFoodItemAdapter extends RecyclerView.Adapter<VerticalFoodItemViewHolder> {
 
     private ArrayList<FoodItem> mFoodItems;
     private Context mContext;
@@ -28,16 +29,8 @@ public class FeaturedFoodItemAdapter extends RecyclerView.Adapter<FoodItemViewHo
     private RecyclerViewListener mListener;
   //  private HomeFragment fragment;
 
-    public FeaturedFoodItemAdapter(ArrayList<FoodItem> mFoodItems, Context mContext, FoodItemListener foodItemListener,RecyclerViewListener mListener) {
-        this.mFoodItems = mFoodItems;
-        this.mContext = mContext;
-        this.foodItemListener = foodItemListener;
-        this.mListener = mListener;
-
-    }
-
     /*This Constructor will be used for ResultsActivity Recycler view*/
-    public FeaturedFoodItemAdapter(ArrayList<FoodItem> mFoodItems, Context mContext, FoodItemListener foodItemListener) {
+    public VerticalFoodItemAdapter(ArrayList<FoodItem> mFoodItems, Context mContext, FoodItemListener foodItemListener) {
         this.mFoodItems = mFoodItems;
         this.mContext = mContext;
         this.foodItemListener = foodItemListener;
@@ -49,14 +42,14 @@ public class FeaturedFoodItemAdapter extends RecyclerView.Adapter<FoodItemViewHo
 
     @NonNull
     @Override
-    public FoodItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sample_restaurantsfragment_featured_items_rv,parent,false);
-        FoodItemViewHolder viewHolder = new FoodItemViewHolder(view,foodItemListener);
+    public VerticalFoodItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sample_vertical_food_items_rv,parent,false);
+        VerticalFoodItemViewHolder viewHolder = new VerticalFoodItemViewHolder(view,foodItemListener);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FoodItemViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull VerticalFoodItemViewHolder holder, int position) {
 
         FoodItem item = mFoodItems.get(position);
 

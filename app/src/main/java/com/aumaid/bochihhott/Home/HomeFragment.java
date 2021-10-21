@@ -27,7 +27,7 @@ import com.aumaid.bochihhott.Adapters.PopularFoodsAdapter;
 import com.aumaid.bochihhott.Adapters.SpecialOffersItemsAdapter;
 import com.aumaid.bochihhott.Adapters.UniversalImageLoader;
 import com.aumaid.bochihhott.DAO.User;
-import com.aumaid.bochihhott.Interfaces.CategoriesOptionListener;
+import com.aumaid.bochihhott.Interfaces.RecyclerViewItemClickListener;
 import com.aumaid.bochihhott.Interfaces.FoodItemListener;
 import com.aumaid.bochihhott.Interfaces.PopularFoodsListener;
 import com.aumaid.bochihhott.Models.Category;
@@ -53,7 +53,7 @@ import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventList
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment  implements CategoriesOptionListener, PopularFoodsListener, FoodItemListener, BottomNavigationView.OnNavigationItemSelectedListener {
+public class HomeFragment extends Fragment  implements RecyclerViewItemClickListener, PopularFoodsListener, FoodItemListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "HomeFragment";
 
@@ -388,7 +388,7 @@ public class HomeFragment extends Fragment  implements CategoriesOptionListener,
     /**
      * This method assigns functionality to the categories recycler view in home screen*/
     @Override
-    public void onCategoryClicked(int position) {
+    public void onViewClicked(int position) {
         shimmerFrameLayout.startShimmer();
         type = "Food Items";
         switch (position){

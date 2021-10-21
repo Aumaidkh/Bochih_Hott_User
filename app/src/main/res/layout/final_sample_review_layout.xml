@@ -1,65 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="380dp"
+<RelativeLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:padding="10dp">
+    android:layout_marginTop="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical">
 
-        <!--User Icon-->
-        <de.hdodenhof.circleimageview.CircleImageView
-           android:layout_alignParentStart="true"
-            android:id="@+id/reviewerProfilePic"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@color/green"/>
+     <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
 
-        <!--Username-->
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/reviewerProfilePic"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/sofiia_medium"
-            android:textColor="@color/dark80"
-            android:textSize="15sp"
-            android:text="Murtaza Khursheed"
-            android:id="@+id/reviewerUserName"/>
+         <!--User Icon-->
+         <de.hdodenhof.circleimageview.CircleImageView
+             android:layout_alignParentStart="true"
+             android:id="@+id/reviewerProfilePic"
+             android:layout_width="48dp"
+             android:layout_height="48dp"
+             android:src="@color/green"/>
 
-        <!--Time stamp-->
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/reviewerProfilePic"
-            android:layout_below="@id/reviewerUserName"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/sofia_regular"
-            android:textColor="#B3B3B3"
-            android:textSize="13sp"
-            android:text="12/11/2021"
-            android:id="@+id/reviewTimestamp"/>
+         <!--Username-->
+         <com.google.android.material.textview.MaterialTextView
+             android:layout_width="wrap_content"
+             android:layout_marginTop="10dp"
+             android:layout_height="wrap_content"
+             android:layout_toEndOf="@id/reviewerProfilePic"
+             android:layout_marginStart="10dp"
+             android:fontFamily="@font/sofiia_medium"
+             android:textColor="@color/dark80"
+             android:textSize="15sp"
+             android:text="Murtaza Khursheed"
+             android:id="@+id/reviewerUserName"/>
 
-    </RelativeLayout>
+         <!--Time stamp-->
+         <com.google.android.material.textview.MaterialTextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_toEndOf="@id/reviewerProfilePic"
+             android:layout_below="@id/reviewerUserName"
+             android:layout_marginStart="10dp"
+             android:fontFamily="@font/sofia_regular"
+             android:textColor="#B3B3B3"
+             android:textSize="13sp"
+             android:text="12/11/2021"
+             android:id="@+id/reviewTimestamp"/>
 
-    <!--Description-->
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/review"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="10dp"
-        android:layout_below="@+id/reviewerUserName"
-        android:layout_toEndOf="@id/reviewerProfilePic"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/sofila_pro_light"
-        android:lineHeight="15dp"
-        android:text="@string/default_food_description"
-        android:textColor="@color/grey"
-        android:textSize="13sp" />
+         <Spinner
+             android:id="@+id/options"
+             android:layout_alignParentEnd="true"
+             app:tint="#b4b4b4"
+             style="@style/SpinnerTheme"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/ic_baseline_more_vert_24"/>
+
+     </RelativeLayout>
+
+     <!--Description-->
+     <com.google.android.material.textview.MaterialTextView
+         android:id="@+id/review"
+         android:layout_width="wrap_content"
+         android:layout_marginTop="5dp"
+         android:layout_marginStart="10dp"
+         android:layout_below="@+id/reviewerUserName"
+         android:layout_toEndOf="@id/reviewerProfilePic"
+         android:layout_height="wrap_content"
+         android:fontFamily="@font/sofila_pro_light"
+         android:lineHeight="15dp"
+         android:text="@string/default_food_description"
+         android:textColor="@color/grey"
+         android:textSize="13sp" />
 
 
-</LinearLayout>
+ </LinearLayout>
+
+</RelativeLayout>
