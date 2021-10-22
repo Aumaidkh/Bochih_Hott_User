@@ -6,9 +6,9 @@ import java.util.HashMap;
 
 public class Order implements Serializable {
 
-    private String placed_order_id;
-    private String customer_name;
-    private String contact_number;
+    private String placed_order_id; //
+    private String customer_name; //
+    private String contact_number; //
     private String customer_id; //
     private String delivery_address;//
     private String delivery_address_id;

@@ -9,10 +9,12 @@ package com.aumaid.bochihhott.Restaurant;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,6 +23,7 @@ import android.widget.TextView;
 
 import com.aumaid.bochihhott.FinalAdapters.FeaturedFoodItemAdapter;
 import com.aumaid.bochihhott.FinalAdapters.VerticalFoodItemAdapter;
+import com.aumaid.bochihhott.Home.FinalProductDescriptionFragment;
 import com.aumaid.bochihhott.Interfaces.FoodItemListener;
 import com.aumaid.bochihhott.Models.FoodItem;
 import com.aumaid.bochihhott.R;
@@ -139,6 +142,17 @@ public class ResultsActivity extends AppCompatActivity implements FoodItemListen
 
     @Override
     public void onFoodClicked(int position) {
+        FoodItem foodItem = foodItems.get(position);
+        Log.d(TAG, "init: Inflating Food Description Fragment");
 
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("FOOD_ITEM", foodItem);
+
+        FinalProductDescriptionFragment fragment = new FinalProductDescriptionFragment();
+        fragment.setArguments(bundle);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container,fragment);
+        transaction.addToBackStack("Product Description Fragment");
+        transaction.commit();
     }
 }

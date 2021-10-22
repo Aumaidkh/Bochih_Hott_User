@@ -12,7 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -101,13 +103,39 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
         setUpFragment();
         bindWidgets();
         initButtonListeners();
-       // fetchFeaturedFoodItems();
+        // fetchFeaturedFoodItems();
         fetchOffers();
-      //  fetchMenu();
+        //  fetchMenu();
         initWidgets();
-       // loadRecyclerViews();
+        initMenu();
+        // loadRecyclerViews();
 
         return view;
+    }
+
+    private void initMenu(){
+        Spinner mMenuSpinner = view.findViewById(R.id.menuSpinner);
+        RestaurantMenuAdapter menuAdapter = new RestaurantMenuAdapter(getActivity(),menu);
+        mMenuSpinner.setAdapter(menuAdapter);
+
+        mMenuSpinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent,
+                                               View view, int position, long id)
+                    {
+
+                        // It returns the clicked item.
+                        MenuItem clickedItem = (MenuItem)
+                                parent.getItemAtPosition(position);
+                        String name = clickedItem.getCategory_name();
+                        // Toast.makeText(MainActivity.this, name + " selected", Toast.LENGTH_SHORT).show();
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent)
+                    {
+                    }
+                });
     }
 
 
@@ -116,7 +144,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
         mOffers.clear();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("offers");
 
-      //  reference.keepSynced(true);
+        //  reference.keepSynced(true);
 
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -154,7 +182,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
                     MenuItem menuItem = ds.getValue(MenuItem.class);
                     Log.d(TAG, "onDataChange: Menu Icon: "+ds.toString());
                     menu.add(menuItem);
-                  //  Log.d(TAG, "onDataChange: Menu Icon: "+menuItem.getCategory_icon());
+                    //  Log.d(TAG, "onDataChange: Menu Icon: "+menuItem.getCategory_icon());
 
                 }
                 fetchFeaturedFoodItems();
@@ -218,18 +246,18 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
             }
         });
 
-        ExtendedFloatingActionButton mMenuBtn = view.findViewById(R.id.menu_button);
-        mMenuBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString("RESTAURANT_ID",partner.getRestaurant_id());
-                BottomMenuFragment fragment = new BottomMenuFragment();
-                fragment.setArguments(bundle);
-                fragment.show(getActivity().getSupportFragmentManager(),"Menu Sheet");
-                //
-            }
-        });
+//        ExtendedFloatingActionButton mMenuBtn = view.findViewById(R.id.menu_button);
+//        mMenuBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Bundle bundle = new Bundle();
+//                bundle.putString("RESTAURANT_ID",partner.getRestaurant_id());
+//                BottomMenuFragment fragment = new BottomMenuFragment();
+//                fragment.setArguments(bundle);
+//                fragment.show(getActivity().getSupportFragmentManager(),"Menu Sheet");
+//                //
+//            }
+//        });
 
     }
     private void bindWidgets(){
@@ -280,8 +308,8 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
      * Note: in future it must show the items from the category user clicks on */
     private void setUpFoodItemsRView(String category, View view){
         //Log.d(TAG, "setUpFoodItemsRView: Category: "+category+" View :"+view);
-       // TextView mFoodCategoryHeadingText = view.findViewById(R.id.menuItemHeading);
-      //  mFoodCategoryHeadingText.setText(category+"'s");
+        // TextView mFoodCategoryHeadingText = view.findViewById(R.id.menuItemHeading);
+        //  mFoodCategoryHeadingText.setText(category+"'s");
         // shimmerFrameLayout.startShimmer();
         RecyclerView mFoodItemsRecycler = view.findViewById(R.id.foodItemsRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
@@ -388,32 +416,32 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
         mRestaurantMenuRv.setAdapter(menuAdapter);*/
 
         //Offers Carousel
-      //  SliderView sliderView = view.findViewById(R.id.slider);
+        //  SliderView sliderView = view.findViewById(R.id.slider);
         // after adding data to our array list we are passing
         // that array list inside our adapter class.
-      //  SliderAdapter sliderAdapter = new SliderAdapter(getActivity(), mOffers);
+        //  SliderAdapter sliderAdapter = new SliderAdapter(getActivity(), mOffers);
 
         // belows line is for setting adapter
         // to our slider view
-      //  sliderView.setSliderAdapter(sliderAdapter);
+        //  sliderView.setSliderAdapter(sliderAdapter);
 
         // below line is for setting animation to our slider.
-      //  sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+        //  sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
 
         // below line is for setting auto cycle duration.
-      //  sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
+        //  sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
 
         // below line is for setting
         // scroll time animation
-     //   sliderView.setScrollTimeInSec(3);
+        //   sliderView.setScrollTimeInSec(3);
 
         // below line is for setting auto
         // cycle animation to our slider
-     //   sliderView.setAutoCycle(true);
+        //   sliderView.setAutoCycle(true);
 
         // below line is use to start
         // the animation of our slider view.
-      //  sliderView.startAutoCycle();
+        //  sliderView.startAutoCycle();
 
 
         //For Menu Recycle the same home page categories however names of these categories
@@ -424,7 +452,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
     /**
      * This method is used to make calculation of reviews and then sets the text views for
      * number of reviews accordingly*/
-   private void calculate() {
+    private void calculate() {
         //Making Database Connection
         String restaurant_id = partner.getRestaurant_id();
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("reviews");
@@ -500,7 +528,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
             }
         }
 
-      //  setUpFoodItemsRView(selectedCategory.getCategory_name(),view);
+        //  setUpFoodItemsRView(selectedCategory.getCategory_name(),view);
         menuAdapter.notifyDataSetChanged();
         foodItemAdapter.notifyDataSetChanged();
 

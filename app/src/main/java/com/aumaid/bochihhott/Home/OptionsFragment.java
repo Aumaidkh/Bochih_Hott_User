@@ -30,6 +30,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
+
 public class OptionsFragment extends Fragment implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "OptionsFragment";
@@ -44,6 +46,10 @@ public class OptionsFragment extends Fragment implements BottomNavigationView.On
     private RelativeLayout mOrdersBtn;
 
     private ImageView mProfilePhoto;
+
+    /*This variable will be passed to the next activity so as to
+    * prevent other database read operation*/
+    private User user;
 
     @Nullable
     @Override
@@ -71,10 +77,11 @@ public class OptionsFragment extends Fragment implements BottomNavigationView.On
            @Override
            public void onDataChange(@NonNull DataSnapshot snapshot) {
                Log.d(TAG, "onDataChange: Setting profile photo");
-               User user = snapshot.getValue(User.class);
+               user = snapshot.getValue(User.class);
                Glide.with(getActivity())
                        .load(user.getProfile_photo())
                        .into(mProfilePhoto);
+
            }
 
            @Override
@@ -107,7 +114,9 @@ public class OptionsFragment extends Fragment implements BottomNavigationView.On
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: launching orders activity...");
-                startActivity(new Intent(getActivity(), OrdersActivity.class));
+                Intent intent = new Intent(getActivity(),OrdersActivity.class);
+                intent.putExtra("USER", user);
+                startActivity(intent);
             }
         });
     }

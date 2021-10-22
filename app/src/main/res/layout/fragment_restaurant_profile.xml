@@ -1,275 +1,313 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
+    <androidx.core.widget.NestedScrollView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/restaurantLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!--Restaurant  Cover Photo-->
-            <ImageView
-                android:id="@+id/restaurantCoverPhoto"
+            <RelativeLayout
+                android:id="@+id/restaurantLayout"
                 android:layout_width="match_parent"
-                android:layout_height="230dp"
-                android:src="@drawable/burger1"
-                android:scaleType="fitXY"/>
+                android:layout_height="match_parent">
 
-            <!--Back Button-->
-            <androidx.cardview.widget.CardView
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="40dp"
-                android:layout_width="45dp"
-                android:layout_height="50dp"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="8dp"
-                app:cardUseCompatPadding="true">
-
+                <!--Restaurant  Cover Photo-->
                 <ImageView
-                    android:id="@+id/backArrow"
+                    android:id="@+id/restaurantCoverPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:src="@drawable/burger1"
+                    android:scaleType="fitXY"/>
+
+                <!--Back Button-->
+                <androidx.cardview.widget.CardView
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_width="45dp"
+                    android:layout_height="50dp"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardUseCompatPadding="true">
+
+                    <ImageView
+                        android:id="@+id/backArrow"
+                        android:layout_gravity="center"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        app:tint="@color/dark50"
+                        android:src="@drawable/ic_black_back_arrow"
+                        />
+
+                </androidx.cardview.widget.CardView>
+
+
+            </RelativeLayout>
+
+            <!-- &lt;!&ndash;Restaurant Profile Photo&ndash;&gt;
+             <de.hdodenhof.circleimageview.CircleImageView
+                 android:id="@+id/restaurantPhoto"
+                 android:layout_centerHorizontal="true"
+                 android:layout_width="100dp"
+                 android:layout_height="100dp"
+                 android:layout_marginTop="200dp"
+                 app:civ_border_color="@color/white"
+                 app:civ_border_width="7dp"
+                 android:src="@color/orange"/>-->
+
+
+            <LinearLayout
+                android:layout_below="@id/restaurantLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--Restaurant Name-->
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/restaurantNameTv"
+                    android:text="Hat Trick"
+                    android:fontFamily="@font/sofia_pro_semi_bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/dark"
                     android:layout_gravity="center"
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
-                    app:tint="@color/dark50"
-                    android:src="@drawable/ic_black_back_arrow"
+                    android:layout_marginTop="10dp"/>
+
+                <!--Restaurant Address-->
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/restaurantAddressTv"
+                    android:text="K.P Road Anantnag"
+                    android:fontFamily="@font/sofiia_medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray"
+                    android:layout_gravity="center"
                     />
 
-            </androidx.cardview.widget.CardView>
+                <!--Delivery TIme and Distance-->
+                <!--Delivery Charges-->
+                <LinearLayout
+                    android:layout_gravity="center_horizontal"
+                    android:paddingStart="25dp"
+                    android:paddingEnd="25dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <!--Delivery Charges-->
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/bikeIcon"
+                            android:layout_centerVertical="true"
+                            android:layout_width="18dp"
+                            android:layout_height="wrap_content"
+                            app:tint="@color/orange"
+                            android:src="@drawable/ic_baseline_directions_bike_24"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/distanceTv"
+                            android:layout_width="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_height="wrap_content"
+                            android:text="2 Km"
+                            android:layout_toEndOf="@id/bikeIcon"
+                            android:layout_marginStart="3dp"
+                            android:fontFamily="@font/sofiia_regular"
+                            android:textSize="13sp"/>
+
+                    </RelativeLayout>
+
+                    <!--Delivery Time-->
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/clockIcon"
+                            android:layout_centerVertical="true"
+                            android:layout_width="18dp"
+                            android:layout_height="wrap_content"
+                            app:tint="@color/orange"
+                            android:src="@drawable/ic_clock"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/deliveryTimeTv"
+                            android:layout_width="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_height="wrap_content"
+                            android:text="10 - 15 mins"
+                            android:layout_marginStart="2dp"
+                            android:layout_toEndOf="@id/clockIcon"
+                            android:fontFamily="@font/sofiia_regular"
+                            android:textSize="13sp"/>
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!--Reviews-->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ratingsTv"
+                        android:text="4.5"
+                        android:textColor="@color/dark"
+                        android:layout_marginStart="8dp"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/sofia_regular"/>
+
+                    <ImageView
+                        android:id="@+id/starIcon"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        app:tint="@color/yellow"
+                        android:layout_marginStart="4dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@id/ratingsTv"
+                        android:src="@drawable/ic_star"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/reviewsCount"
+                        android:text="(30+)"
+                        android:layout_toEndOf="@id/starIcon"
+                        android:textColor="@color/gray"
+                        android:layout_marginStart="8dp"
+                        android:textSize="14sp"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/sofiia_regular"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/seeAllReviews"
+                        android:text="See all reviews"
+                        android:layout_toEndOf="@id/reviewsCount"
+                        android:textColor="@color/orange"
+                        android:layout_marginStart="8dp"
+                        android:textSize="14sp"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/sofiia_regular"/>
+
+                </RelativeLayout>
+
+                <!--Offers Section-->
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/sofiia_medium"
+                    android:text="Offers"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/dark"
+                    android:textSize="20sp" />
+
+                <!--Slider view for displaying our sliding images-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/offersRv"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    />
+
+
+                <!--Featured Section-->
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/sofiia_medium"
+                    android:text="Featured Items"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/dark"
+                    android:textSize="20sp" />
+
+
+                <!--Food Items Recycler view with horizontal Orientation here-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/restaurantFeaturedItemsRv"/>
+
+
+
+            </LinearLayout>
 
 
         </RelativeLayout>
 
-       <!-- &lt;!&ndash;Restaurant Profile Photo&ndash;&gt;
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/restaurantPhoto"
-            android:layout_centerHorizontal="true"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="200dp"
-            app:civ_border_color="@color/white"
-            app:civ_border_width="7dp"
-            android:src="@color/orange"/>-->
+    </androidx.core.widget.NestedScrollView>
 
+    <!--Showing Menu-->
+    <RelativeLayout
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_below="@id/restaurantLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            app:cardBackgroundColor="@color/orange"
+            app:cardCornerRadius="35dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
 
-            <!--Restaurant Name-->
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/restaurantNameTv"
-                android:text="Hat Trick"
-                android:fontFamily="@font/sofia_pro_semi_bold"
-                android:textSize="20sp"
-                android:textColor="@color/dark"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"/>
-
-            <!--Restaurant Address-->
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/restaurantAddressTv"
-                android:text="K.P Road Anantnag"
-                android:fontFamily="@font/sofiia_medium"
-                android:textSize="12sp"
-                android:textColor="@color/gray"
-                android:layout_gravity="center"
-                />
-
-            <!--Delivery TIme and Distance-->
-            <!--Delivery Charges-->
-            <LinearLayout
-                android:layout_gravity="center_horizontal"
-                android:paddingStart="25dp"
-                android:paddingEnd="25dp"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <!--Delivery Charges-->
-                <RelativeLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/bikeIcon"
-                        android:layout_centerVertical="true"
-                        android:layout_width="18dp"
-                        android:layout_height="wrap_content"
-                        app:tint="@color/orange"
-                        android:src="@drawable/ic_baseline_directions_bike_24"/>
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/distanceTv"
-                        android:layout_width="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_height="wrap_content"
-                        android:text="2 Km"
-                        android:layout_toEndOf="@id/bikeIcon"
-                        android:layout_marginStart="3dp"
-                        android:fontFamily="@font/sofiia_regular"
-                        android:textSize="13sp"/>
-
-                </RelativeLayout>
-
-                <!--Delivery Time-->
-                <RelativeLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/clockIcon"
-                        android:layout_centerVertical="true"
-                        android:layout_width="18dp"
-                        android:layout_height="wrap_content"
-                        app:tint="@color/orange"
-                        android:src="@drawable/ic_clock"/>
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/deliveryTimeTv"
-                        android:layout_width="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_height="wrap_content"
-                        android:text="10 - 15 mins"
-                        android:layout_marginStart="2dp"
-                        android:layout_toEndOf="@id/clockIcon"
-                        android:fontFamily="@font/sofiia_regular"
-                        android:textSize="13sp"/>
-
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <!--Reviews-->
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.google.android.material.textview.MaterialTextView
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:layout_centerInParent="true"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_round_restaurant_menu_24"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/ratingsTv"
-                    android:text="4.5"
-                    android:textColor="@color/dark"
-                    android:layout_marginStart="8dp"
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/sofia_regular"/>
+                    android:layout_height="wrap_content"/>
 
-                <ImageView
-                    android:id="@+id/starIcon"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    app:tint="@color/yellow"
-                    android:layout_marginStart="4dp"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/ratingsTv"
-                    android:src="@drawable/ic_star"/>
-
-                <com.google.android.material.textview.MaterialTextView
+                <Spinner
+                    android:layout_centerInParent="true"
+                    android:id="@+id/menuSpinner"
+                    android:backgroundTint="@color/white"
+                    android:background="@drawable/ic_round_restaurant_menu_24"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/reviewsCount"
-                    android:text="(30+)"
-                    android:layout_toEndOf="@id/starIcon"
-                    android:textColor="@color/gray"
-                    android:layout_marginStart="8dp"
-                    android:textSize="14sp"
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/sofiia_regular"/>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/seeAllReviews"
-                    android:text="See all reviews"
-                    android:layout_toEndOf="@id/reviewsCount"
-                    android:textColor="@color/orange"
-                    android:layout_marginStart="8dp"
-                    android:textSize="14sp"
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/sofiia_regular"/>
+                    android:layout_height="wrap_content"/>
 
             </RelativeLayout>
 
-            <!--Offers Section-->
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/sofiia_medium"
-                android:text="Offers"
-                android:layout_marginStart="20dp"
-                android:textColor="@color/dark"
-                android:textSize="20sp" />
 
-            <!--Slider view for displaying our sliding images-->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/offersRv"
-                android:layout_width="match_parent"
-                android:layout_height="220dp"
-                />
+        </androidx.cardview.widget.CardView>
 
 
-            <!--Featured Section-->
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/sofiia_medium"
-                android:text="Featured Items"
-                android:layout_marginStart="20dp"
-                android:textColor="@color/dark"
-                android:textSize="20sp" />
-
-
-            <!--Food Items Recycler view with horizontal Orientation here-->
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/restaurantFeaturedItemsRv"/>
-
-
-            <!--Showing Menu-->
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <include layout="@layout/expandable_floating_action_button_layout"/>
-
-            </RelativeLayout>
-
-            <!--Food Items Recycler View-->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/foodItemsRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-
-        </LinearLayout>
-
+        <!--<include layout="@layout/expandable_floating_action_button_layout"/>-->
 
     </RelativeLayout>
 
 
-
-
-</androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

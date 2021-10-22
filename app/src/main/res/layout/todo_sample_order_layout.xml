@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021.
+  ~ All Rights Reserved.
+  ~ BochihHott and BochihHott Partner are properties of Murtaza Khursheed.
+  -->
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="37dp"
+    app:cardElevation="0.7dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:padding="28dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/detailsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="12dp"
+           >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/orderImage"
+                android:layout_width="70dp"
+                android:src="@drawable/burger1"
+                android:layout_height="70dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/timeStamp"
+                android:text="23 Oct 2020 at 8:22 ."
+                android:layout_toEndOf="@id/orderImage"
+                android:layout_marginStart="25dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/sofiia_regular"
+                android:textColor="#9796A1"/>
+
+
+            <TextView
+                android:id="@+id/quantityTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:layout_toEndOf="@id/timeStamp"
+                android:layout_marginStart="25dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/sofiia_regular"
+                android:textColor="#9796A1"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/restaurantNameTv"
+                android:text="Dominick Pizza"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/quantityTv"
+                android:layout_toEndOf="@id/orderImage"
+                android:layout_marginStart="25dp"
+                android:fontFamily="@font/sofia_pro_semi_bold"
+                android:textColor="@color/black"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="25dp"
+                android:layout_below="@id/restaurantNameTv"
+                android:src="@color/green"
+                android:layout_toEndOf="@id/orderImage"
+                android:id="@+id/dot"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/orderStatus"
+                android:text="Order Delivered"
+                android:layout_marginTop="12dp"
+                android:layout_toEndOf="@id/dot"
+                android:layout_below="@id/restaurantNameTv"
+                android:layout_marginStart="5dp"
+                android:textSize="11sp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/green"/>
+
+            <TextView
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/priceTv"
+                android:text="Rs. 104"
+                android:layout_marginTop="-4dp"
+                android:textSize="16sp"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/sofiia_regular"
+                android:textColor="@color/orange"/>
+
+        </RelativeLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rateButton"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/white"
+            app:cornerRadius="25dp"
+            android:text="Rate"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/dark80"
+            android:layout_below="@id/detailsLayout"
+            android:layout_alignParentStart="true"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/reorderButton"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/orange"
+            app:cornerRadius="25dp"
+            android:layout_marginTop="10dp"
+            android:text="Re-Order"
+            android:textColor="@color/white"
+            android:layout_below="@id/detailsLayout"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

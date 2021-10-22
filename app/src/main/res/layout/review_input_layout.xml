@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--Restaurant/Food Background-->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/restaurantImageCard"
+        app:cardElevation="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:scaleType="fitXY"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@color/green"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <!--Implement ToolBar Here-->
+
+    <!--How was your last order-->
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_below="@id/restaurantImageCard"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="30dp"
+        android:id="@+id/howWasOrder"
+        android:textSize="26sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How was your last Order"
+        android:textColor="@color/black"
+        android:fontFamily="@font/sofiia_regular"/>
+
+    <!--Rating Message-->
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:id="@+id/reviewMessage"
+        android:textSize="22sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Good"
+        android:textColor="#F87720"
+        android:fontFamily="@font/sofiia_regular"/>
+
+    <!--Rating Bar-->
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numStars="5"/>
+
+    <!--Review Input-->
+    <RelativeLayout
+        android:layout_below="@id/ratingBar"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/review_box_background"
+        android:layout_height="130dp">
+        <EditText
+            android:id="@+id/reviewInput"
+            android:layout_margin="10dp"
+            android:hint="Write your review"
+            android:background="#00000000"
+            android:inputType="textMultiLine"
+            android:gravity="top"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+
+    <!--Submit Button-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/submitButton"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="260dp"
+        android:layout_height="75dp"
+        android:backgroundTint="#F87720"
+        app:cornerRadius="35dp"
+        android:text="Submit"
+        android:textSize="15sp"
+        android:fontFamily="@font/sofiia_regular"
+        />
+
+</LinearLayout>

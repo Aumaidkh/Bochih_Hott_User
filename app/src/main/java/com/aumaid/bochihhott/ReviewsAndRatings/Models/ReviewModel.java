@@ -8,12 +8,13 @@ package com.aumaid.bochihhott.ReviewsAndRatings.Models;
 
 public class ReviewModel {
 
-    private String profile_pic;
+    private String profile_pic; //
     private String review_id;
-    private String res_id;
-    private String timestamp;
-    private String body;
-    private String username;
+    private String res_id; //
+    private String timestamp; //
+    private String body; //
+    private float ratings;
+    private String username; //
 
     public ReviewModel(){
 
@@ -25,6 +26,14 @@ public class ReviewModel {
         this.timestamp = timestamp;
         this.body = body;
         this.username = username;
+    }
+
+    public float getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(float ratings) {
+        this.ratings = ratings;
     }
 
     public String getProfile_pic() {

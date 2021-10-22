@@ -31,7 +31,7 @@
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
-    <style name="Theme.BochihHott" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.BochihHott" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorPrimaryVariant">#ffffff</item>

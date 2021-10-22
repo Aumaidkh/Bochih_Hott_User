@@ -38,9 +38,11 @@ import com.aumaid.bochihhott.Interfaces.RestaurantListener;
 import com.aumaid.bochihhott.Models.Category;
 import com.aumaid.bochihhott.Models.FoodItem;
 import com.aumaid.bochihhott.Models.Partner;
+import com.aumaid.bochihhott.Models.Restaurant;
 import com.aumaid.bochihhott.Models.SpecialOfferedItem;
 import com.aumaid.bochihhott.Profile.EditProfileActivity;
 import com.aumaid.bochihhott.R;
+import com.aumaid.bochihhott.Restaurant.RestaurantActivity;
 import com.aumaid.bochihhott.Restaurant.RestaurantFragment;
 import com.bumptech.glide.Glide;
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -708,14 +710,18 @@ public class FinalHomeFragment extends Fragment  implements NavigationView.OnNav
 
     @Override
     public void onRestaurantClicked(int position) {
+        Intent intent = new Intent(getActivity(), RestaurantActivity.class);
+        intent.putExtra("RESTAURANT",mNearByRestaurants.get(position));
+      //  intent.putExtra("CATEGORY",category);
+        startActivity(intent);
     //    Log.d(TAG, "onRestaurantClicked: "+mNearByRestaurants.size()+"");
    //     Log.d(TAG, "onRestaurantClicked: Clicked Restaurant: "+mNearByRestaurants.get(position));
-        Bundle bundle = new Bundle();
+    /*    Bundle bundle = new Bundle();
         bundle.putSerializable("RESTAURANT",mNearByRestaurants.get(position));
         RestaurantFragment restaurantFragment = new RestaurantFragment();
         restaurantFragment.setArguments(bundle);
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container,restaurantFragment,"Restaurant_Fragment");
-        transaction.commit();
+        transaction.commit();*/
     }
 }

@@ -1,6 +1,8 @@
 package com.aumaid.bochihhott.DAO;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private String profile_photo;
     private String phone_number;

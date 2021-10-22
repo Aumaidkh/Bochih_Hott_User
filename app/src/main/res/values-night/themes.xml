@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.BochihHott" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.BochihHott" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorPrimaryVariant">@color/splash_screen_status_bar</item>
@@ -16,7 +16,7 @@
 
 
     </style>
-    <!--Bottomsheet background-->
+    <!--Bottom sheet background-->
     <style name="AppBottomSheetDialogTheme"
         parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/AppModalStyle</item>
