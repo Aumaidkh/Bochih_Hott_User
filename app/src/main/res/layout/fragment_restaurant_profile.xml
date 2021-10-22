@@ -214,6 +214,7 @@
                         android:layout_centerVertical="true"
                         android:fontFamily="@font/sofiia_regular"/>
 
+
                 </RelativeLayout>
 
                 <!--Offers Section-->
@@ -271,7 +272,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.cardview.widget.CardView
+        <!--<androidx.cardview.widget.CardView
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
@@ -291,21 +292,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
-                <Spinner
-                    android:layout_centerInParent="true"
-                    android:id="@+id/menuSpinner"
-                    android:backgroundTint="@color/white"
-                    android:background="@drawable/ic_round_restaurant_menu_24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+
 
             </RelativeLayout>
 
 
-        </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>-->
 
 
-        <!--<include layout="@layout/expandable_floating_action_button_layout"/>-->
+        <include layout="@layout/expandable_floating_action_button_layout"/>
 
     </RelativeLayout>
 

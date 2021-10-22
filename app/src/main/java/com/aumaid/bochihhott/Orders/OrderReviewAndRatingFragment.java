@@ -73,6 +73,14 @@ public class OrderReviewAndRatingFragment extends SupportBlurDialogFragment {
     }
 
     /**
+     * Controlling Blur radius*/
+    @Override
+    protected int getBlurRadius() {
+        // Allow to customize the blur radius factor.
+        return 3;
+    }
+
+    /**
      * This method resizes the fragment to fit into the
      * parent fragment */
     private void setUpFragment(){

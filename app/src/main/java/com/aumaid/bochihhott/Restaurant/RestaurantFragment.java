@@ -34,6 +34,7 @@ import com.aumaid.bochihhott.Models.CarouselData;
 import com.aumaid.bochihhott.Models.FoodItem;
 import com.aumaid.bochihhott.Models.MenuItem;
 import com.aumaid.bochihhott.Models.Partner;
+import com.aumaid.bochihhott.Orders.OrderReviewAndRatingFragment;
 import com.aumaid.bochihhott.R;
 import com.aumaid.bochihhott.ReviewsAndRatings.Activities.ReviewsActivity;
 import com.aumaid.bochihhott.Utils.CarouselHelper;
@@ -66,7 +67,7 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
     private TextView mRatings;
     private TextView mReviewsCount;
     private TextView mSeeReviews;
-
+    private Spinner mMenuSpinner;
     private FoodItemAdapter foodItemAdapter;
     private FoodItemAdapter foodAdapter;
     private FinalMenuAdapter menuAdapter;
@@ -107,37 +108,11 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
         fetchOffers();
         //  fetchMenu();
         initWidgets();
-        initMenu();
+     //   initMenu();
         // loadRecyclerViews();
 
         return view;
     }
-
-    private void initMenu(){
-        Spinner mMenuSpinner = view.findViewById(R.id.menuSpinner);
-        RestaurantMenuAdapter menuAdapter = new RestaurantMenuAdapter(getActivity(),menu);
-        mMenuSpinner.setAdapter(menuAdapter);
-
-        mMenuSpinner.setOnItemSelectedListener(
-                new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent,
-                                               View view, int position, long id)
-                    {
-
-                        // It returns the clicked item.
-                        MenuItem clickedItem = (MenuItem)
-                                parent.getItemAtPosition(position);
-                        String name = clickedItem.getCategory_name();
-                        // Toast.makeText(MainActivity.this, name + " selected", Toast.LENGTH_SHORT).show();
-                    }
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent)
-                    {
-                    }
-                });
-    }
-
 
 
     private void fetchOffers(){
@@ -246,18 +221,25 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
             }
         });
 
-//        ExtendedFloatingActionButton mMenuBtn = view.findViewById(R.id.menu_button);
-//        mMenuBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Bundle bundle = new Bundle();
-//                bundle.putString("RESTAURANT_ID",partner.getRestaurant_id());
-//                BottomMenuFragment fragment = new BottomMenuFragment();
-//                fragment.setArguments(bundle);
-//                fragment.show(getActivity().getSupportFragmentManager(),"Menu Sheet");
-//                //
-//            }
-//        });
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
+
+        ExtendedFloatingActionButton mMenuBtn = view.findViewById(R.id.menu_button);
+        mMenuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RestaurantMenuFragment fragment = new RestaurantMenuFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("RESTAURANT",partner);
+                fragment.setArguments(bundle);
+                fragment.show(getActivity().getSupportFragmentManager(),"Menu Fragment");
+
+            }
+        });
 
     }
     private void bindWidgets(){
@@ -270,7 +252,6 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
         mRatings = view.findViewById(R.id.ratingsTv);
         mReviewsCount = view.findViewById(R.id.reviewsCount);
         mSeeReviews = view.findViewById(R.id.seeAllReviews);
-
 
     }
     private void initWidgets(){
