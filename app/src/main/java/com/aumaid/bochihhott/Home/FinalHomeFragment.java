@@ -605,6 +605,7 @@ public class FinalHomeFragment extends Fragment  implements NavigationView.OnNav
 
         Bundle bundle = new Bundle();
         bundle.putSerializable("FOOD_ITEM", item);
+        bundle.putString("CALLING_FRAGMENT", "FINAL_HOME_FRAGMENT");
 
         FinalProductDescriptionFragment fragment = new FinalProductDescriptionFragment();
         fragment.setArguments(bundle);

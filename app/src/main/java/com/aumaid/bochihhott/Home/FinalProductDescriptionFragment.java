@@ -41,6 +41,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class FinalProductDescriptionFragment extends Fragment implements FoodItemListener, BottomNavigationView.OnNavigationItemSelectedListener {
@@ -138,13 +139,22 @@ public class FinalProductDescriptionFragment extends Fragment implements FoodIte
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "init: Inflating Home Fragment");
+             //   Log.d(TAG, "init: Inflating Home Fragment");
+               // Log.d(TAG, "onClick: Arguments: "+getArguments().toString());
+                String calling_activity = getArguments().getString("CALLING_FRAGMENT");
+               // Log.d(TAG, "onClick: Calling Activity: "+calling_activity);
 
-                HomeFragment fragment = new HomeFragment();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.container, fragment);
-                transaction.addToBackStack("Home Fragment");
-                transaction.commit();
+                if(calling_activity.matches("MENU_ACTIVITY")){
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(FinalProductDescriptionFragment.this).commit();
+
+                }else{
+                    FinalHomeFragment fragment = new FinalHomeFragment();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.container, fragment);
+                    transaction.commit();
+                }
+                
+
             }
         });
 

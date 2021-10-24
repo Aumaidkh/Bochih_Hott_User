@@ -147,12 +147,12 @@ public class ResultsActivity extends AppCompatActivity implements FoodItemListen
 
         Bundle bundle = new Bundle();
         bundle.putSerializable("FOOD_ITEM", foodItem);
+        bundle.putString("CALLING_FRAGMENT","MENU_ACTIVITY");
 
         FinalProductDescriptionFragment fragment = new FinalProductDescriptionFragment();
         fragment.setArguments(bundle);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container,fragment);
-        transaction.addToBackStack("Product Description Fragment");
         transaction.commit();
     }
 }

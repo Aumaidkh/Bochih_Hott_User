@@ -37,6 +37,7 @@ import com.aumaid.bochihhott.Models.Partner;
 import com.aumaid.bochihhott.Orders.OrderReviewAndRatingFragment;
 import com.aumaid.bochihhott.R;
 import com.aumaid.bochihhott.ReviewsAndRatings.Activities.ReviewsActivity;
+import com.aumaid.bochihhott.ReviewsAndRatings.RatingsHelper;
 import com.aumaid.bochihhott.Utils.CarouselHelper;
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -461,6 +462,8 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
             }
         });
 
+        fetchRatings();
+
 
       /*  myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -481,6 +484,25 @@ public class RestaurantFragment extends Fragment implements FoodItemListener, Re
 
             }
         });*/
+    }
+
+    private void fetchRatings(){
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("ratings/"+partner.getRestaurant_id());
+        // myRef.child(partner.getRestaurant_id());
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                float ratings = RatingsHelper.totalRatings(snapshot);
+                mRatings.setText(ratings+"");
+                Log.d(TAG, "onDataChange: Total Ratings :"+ratings);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override

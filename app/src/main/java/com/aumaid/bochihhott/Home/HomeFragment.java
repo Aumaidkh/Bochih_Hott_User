@@ -466,12 +466,12 @@ public class HomeFragment extends Fragment  implements RecyclerViewItemClickList
         Bundle bundle = new Bundle();
         bundle.putSerializable("FOOD_ITEM", item);
 
-        ProductDescriptionNewFragment fragment = new ProductDescriptionNewFragment();
+       /* ProductDescriptionNewFragment fragment = new ProductDescriptionNewFragment();
         fragment.setArguments(bundle);
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container,fragment);
         transaction.addToBackStack("Product Description Fragment");
-        transaction.commit();
+        transaction.commit();*/
 
     }
 
