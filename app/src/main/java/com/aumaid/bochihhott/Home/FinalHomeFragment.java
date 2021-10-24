@@ -38,12 +38,10 @@ import com.aumaid.bochihhott.Interfaces.RestaurantListener;
 import com.aumaid.bochihhott.Models.Category;
 import com.aumaid.bochihhott.Models.FoodItem;
 import com.aumaid.bochihhott.Models.Partner;
-import com.aumaid.bochihhott.Models.Restaurant;
 import com.aumaid.bochihhott.Models.SpecialOfferedItem;
 import com.aumaid.bochihhott.Profile.EditProfileActivity;
 import com.aumaid.bochihhott.R;
 import com.aumaid.bochihhott.Restaurant.RestaurantActivity;
-import com.aumaid.bochihhott.Restaurant.RestaurantFragment;
 import com.bumptech.glide.Glide;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -67,6 +65,7 @@ public class FinalHomeFragment extends Fragment  implements NavigationView.OnNav
     private static final float END_SCALE = 0.8f;
 
     private String type = "Food Items";
+
 
     private BottomNavigationView bottomNavigationView;
 

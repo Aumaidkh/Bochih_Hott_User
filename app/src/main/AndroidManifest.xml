@@ -14,7 +14,7 @@
         android:roundIcon="@drawable/ic_launcher_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.BochihHott">
-        <activity android:name=".Restaurant.RestaurantActivity"></activity>
+        <activity android:name=".Restaurant.RestaurantActivity" />
         <activity android:name=".Restaurant.ResultsActivity" />
         <activity android:name=".ReviewsAndRatings.Activities.ReviewsActivity" />
         <activity android:name=".Cart.LoginDemo" />

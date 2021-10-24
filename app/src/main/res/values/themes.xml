@@ -33,7 +33,7 @@
 
     <style name="Theme.BochihHott" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimary">@color/orange</item>
         <item name="colorPrimaryVariant">#ffffff</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->

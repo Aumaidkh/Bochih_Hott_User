@@ -32,7 +32,7 @@
              android:layout_marginStart="10dp"
              android:fontFamily="@font/sofiia_medium"
              android:textColor="@color/dark80"
-             android:textSize="15sp"
+             android:textSize="18sp"
              android:text="Murtaza Khursheed"
              android:id="@+id/reviewerUserName"/>
 
@@ -45,7 +45,7 @@
              android:layout_marginStart="10dp"
              android:fontFamily="@font/sofia_regular"
              android:textColor="#B3B3B3"
-             android:textSize="13sp"
+             android:textSize="16sp"
              android:text="12/11/2021"
              android:id="@+id/reviewTimestamp"/>
 
@@ -73,7 +73,7 @@
          android:lineHeight="15dp"
          android:text="@string/default_food_description"
          android:textColor="@color/grey"
-         android:textSize="13sp" />
+         android:textSize="16sp" />
 
 
  </LinearLayout>
