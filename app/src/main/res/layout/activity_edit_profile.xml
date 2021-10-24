@@ -246,6 +246,8 @@
         android:layout_centerInParent="true"
         android:visibility="gone"
         android:id="@+id/progressBar"
+        android:indeterminate="true"
+        android:indeterminateDrawable="@drawable/progress_bg"
         android:background="@drawable/progress_bar_background"
         android:layout_width="50dp"
         android:layout_height="50dp"/>

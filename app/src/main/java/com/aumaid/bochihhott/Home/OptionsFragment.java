@@ -2,6 +2,7 @@ package com.aumaid.bochihhott.Home;
 
 import android.content.Intent;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,6 +41,8 @@ public class OptionsFragment extends Fragment implements BottomNavigationView.On
 
 
     private BottomNavigationView bottomNavigationView;
+
+    private final String mPhoneNumber = "+917889534384";
 
     private View view;
 
@@ -132,8 +136,25 @@ public class OptionsFragment extends Fragment implements BottomNavigationView.On
             }
         });
 
+        RelativeLayout mContactUs = view.findViewById(R.id.contactUsMode);
+        mContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Just in case we need to send default message
+                //attach the same message with mSendToWhatsApp "?text="default message""
+                String mSendToWhatsApp = "https://wa.me/" + mPhoneNumber;
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse(
+                                mSendToWhatsApp
+                        )));
+               // sendMessage();
+            }
+        });
+
 
     }
+
+
 
     private void bindWidgets(){
         mProfileBtn = view.findViewById(R.id.profileLayout);
