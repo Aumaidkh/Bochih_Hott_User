@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.aumaid.bochihhott.Addresses.AddressesParentActivity;
 import com.aumaid.bochihhott.DAO.User;
 import com.aumaid.bochihhott.DAO.UserDao;
+import com.aumaid.bochihhott.LogIn.LoginActivity;
 import com.aumaid.bochihhott.Orders.OrdersActivity;
 import com.aumaid.bochihhott.Profile.EditProfileActivity;
 import com.aumaid.bochihhott.R;
@@ -44,6 +45,7 @@ public class OptionsFragment extends Fragment implements BottomNavigationView.On
     private RelativeLayout mProfileBtn;
     private RelativeLayout mAddressesBtn;
     private RelativeLayout mOrdersBtn;
+    private RelativeLayout mLogoutBtn;
 
     private ImageView mProfilePhoto;
 
@@ -119,6 +121,18 @@ public class OptionsFragment extends Fragment implements BottomNavigationView.On
                 startActivity(intent);
             }
         });
+
+        mLogoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     private void bindWidgets(){
@@ -126,6 +140,7 @@ public class OptionsFragment extends Fragment implements BottomNavigationView.On
         mAddressesBtn = view.findViewById(R.id.addressesLayout);
         mOrdersBtn = view.findViewById(R.id.ordersLayout);
         mProfilePhoto = view.findViewById(R.id.profilePic);
+        mLogoutBtn = view.findViewById(R.id.signOutModeLayout);
         bottomNavigationView = view.findViewById(R.id.bottomNavViewBar);
     }
 

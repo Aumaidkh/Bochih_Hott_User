@@ -5,11 +5,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -46,8 +48,8 @@ public class AddressSelectorFragment1 extends Fragment implements AddressClickLi
 
     /*Declaring Views*/
     private View view;
-    private ImageView mBackBtn;
-    private FloatingActionButton mAddAddressBtn;
+    private CardView mBackBtn;
+    private Button mAddAddressBtn;
   //  private TextView mAddAddressTxtBtn;
 
     /*Address Recycler View section*/
@@ -58,7 +60,7 @@ public class AddressSelectorFragment1 extends Fragment implements AddressClickLi
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         view = inflater.inflate(R.layout.fragment_address_picker_layout,container,false);
 
         bindWidgets();

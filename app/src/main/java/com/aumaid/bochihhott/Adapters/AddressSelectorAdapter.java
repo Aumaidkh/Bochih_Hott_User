@@ -37,7 +37,7 @@ public class AddressSelectorAdapter extends RecyclerView.Adapter<AddressViewHold
     @NonNull
     @Override
     public AddressViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sample_address_layout,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sample_new_address_layout,parent,false);
         AddressViewHolder holder = new AddressViewHolder(view,addressClickListener);
         return holder;
     }

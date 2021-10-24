@@ -134,7 +134,7 @@
             android:layout_marginTop="15dp"
             android:layout_height="60dp"
             android:text="Save Address"
-            app:cornerRadius="5dp"
+            app:cornerRadius="25dp"
             android:textSize="15sp"
             android:layout_gravity="end"
             android:textAllCaps="false"
